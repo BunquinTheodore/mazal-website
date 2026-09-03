@@ -107,8 +107,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 .stat{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(14,18,32,.88));backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border:1px solid var(--stroke);border-radius:22px;padding:34px 24px;text-align:center;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s ease}
 .stat:hover{transform:translateY(-4px);border-color:var(--gstroke)}
 .stat b{display:block;font-family:'SpaceG';font-size:clamp(30px,3.6vw,46px);color:var(--green);letter-spacing:-.01em;text-shadow:0 0 34px rgba(192,240,48,.35);font-variant-numeric:tabular-nums}
-/* own compositing layer: prevents the rapidly-updating count-up text from painting stale/desaturated under the card's backdrop-filter blur */
 .counter{display:inline-block}
+/* direct-child combinator: keeps this scoped to the stat's description label, not the count-up number's nested span */
 .stat>span{display:block;margin-top:8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--t3);font-weight:600}
 .perf-card{margin-top:26px;display:flex;flex-direction:column;border-radius:22px;border:1px solid var(--stroke);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(14,18,32,.88));backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);overflow:hidden}
 .perf-text{padding:34px 34px 8px}
