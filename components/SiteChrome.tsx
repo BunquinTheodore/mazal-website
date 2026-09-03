@@ -19,24 +19,6 @@ export default function SiteChrome() {
     }
   }, [entered]);
 
-  useEffect(() => {
-    let activeVideos = 0;
-    const onVideoPlay = () => {
-      activeVideos += 1;
-      audioRef.current?.pause();
-    };
-    const onVideoStop = () => {
-      activeVideos = Math.max(0, activeVideos - 1);
-      if (activeVideos === 0) audioRef.current?.play().catch(() => {});
-    };
-    window.addEventListener('mazal:video-play', onVideoPlay);
-    window.addEventListener('mazal:video-stop', onVideoStop);
-    return () => {
-      window.removeEventListener('mazal:video-play', onVideoPlay);
-      window.removeEventListener('mazal:video-stop', onVideoStop);
-    };
-  }, []);
-
   const handleEnter = () => {
     sessionStorage.setItem('mazal-entered', '1');
     setEntered(true);
