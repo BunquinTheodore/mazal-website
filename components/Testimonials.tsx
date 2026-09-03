@@ -20,14 +20,14 @@ export default function Testimonials() {
         <div className="tcard">
           <div className="quote">&ldquo;</div>
           <p>I&rsquo;ve been to different communities, but this is the first time I&rsquo;ve felt true comfort. The trading world can be incredibly loud, making it easy to feel like just another account number. From day one, Mazal changed that narrative for me.</p>
-          <p>It&rsquo;s not just about the profit; it&rsquo;s about the environment they&rsquo;ve built &mdash; a space fueled by motivation, a sharp business driven mindset, and a shared hunger for success. <b style={{ color: 'var(--t1)', fontWeight: 600 }}>Ito talaga yung community na walang hilaan pababa, kundi mas lalong pinupush ang isa&apos;t isa.</b></p>
+          <p>It&rsquo;s not just about the profit; it&rsquo;s about the environment they&rsquo;ve built, a space fueled by motivation, a sharp business driven mindset, and a shared hunger for success. <b style={{ color: 'var(--t1)', fontWeight: 600 }}>Ito talaga yung community na walang hilaan pababa, kundi mas lalong pinupush ang isa&apos;t isa.</b></p>
           <p>Whenever I have a question, no matter how small, there is always a real person on the other side, ready to support me without judgment. It took away the isolating anxiety of the markets and replaced it with quiet, steady confidence.</p>
           <div className="who"><div className="avatar">AJ</div><div>Ajax<small>MZL member</small></div></div>
         </div>
         <div className="tcard">
           <div className="quote">&ldquo;</div>
           <p>In Mazal I learned how to take profit.</p>
-          <p>Because of the last trading event I also learned to <b style={{ color: 'var(--t1)', fontWeight: 600 }}>close position first before flexing</b> &mdash; you can&apos;t larp PnL cards that you didn&apos;t TP&apos;d forever.</p>
+          <p>Because of the last trading event I also learned to <b style={{ color: 'var(--t1)', fontWeight: 600 }}>close position first before flexing</b>. You can&apos;t larp PnL cards that you didn&apos;t TP&apos;d forever.</p>
           <div className="who"><div className="avatar">KE</div><div>Ketsu<small>MZL member</small></div></div>
         </div>
       </Reveal>

@@ -8,22 +8,22 @@ const items = [
   {
     question: 'Who is this community for?',
     answer:
-      "Anyone curious about trading — complete beginners, experienced traders, students, creators, and brands. If you want to learn the markets with other people instead of alone, MAZAL is for you.",
+      "Anyone curious about trading: complete beginners, experienced traders, students, creators, and brands. If you want to learn the markets with other people instead of alone, MAZAL is for you.",
   },
   {
     question: 'How do I join?',
     answer:
-      "Join the Discord at discord.gg/Mazal — it takes less than a minute. Introduce yourself, pick your channels, and you're in. Membership is completely free.",
+      "Join the Discord at discord.gg/gzBmy2emg. It takes less than a minute. Introduce yourself, pick your channels, and you're in. Membership is completely free.",
   },
   {
     question: 'What markets do you trade?',
     answer:
-      'Primarily crypto and gold. Daily analysis, live sessions, and trade recaps cover both, and the fundamentals we teach — structure, candlesticks, risk management — apply to any market.',
+      'Primarily crypto and gold. Daily analysis, live sessions, and trade recaps cover both, and the fundamentals we teach (structure, candlesticks, risk management) apply to any market.',
   },
   {
     question: 'Is this beginner friendly?',
     answer:
-      "Yes — it's built for beginners. Our free 8 part Beginner Trading Workshop starts from zero: what crypto is, how platforms work, reading charts, and managing risk. No experience needed.",
+      "Yes, it's built for beginners. Our free 8 part Beginner Trading Workshop starts from zero: what crypto is, how platforms work, reading charts, and managing risk. No experience needed.",
   },
 ];
 

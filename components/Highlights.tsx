@@ -12,7 +12,7 @@ export default function Highlights() {
             See MAZAL <span className="g">in motion</span>
           </Words>
         </h2>
-        <p className="sub">Aftermovies from our community trading events &mdash; the energy is easier to show than to explain.</p>
+        <p className="sub">Aftermovies from our community trading events. The energy is easier to show than to explain.</p>
       </Reveal>
       <Reveal as="div" className="wrap rv">
         <div className="vidrow">

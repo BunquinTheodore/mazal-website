@@ -14,7 +14,7 @@ export default function GNWhy() {
         </div>
         <div className="gwhy-card">
           <h3>A Network That Runs Deep</h3>
-          <p>We&rsquo;re partnered with 50+ Web3 communities, media outlets, trading communities, and the top KOLs across the country &mdash; a network that turns any activation into a movement.</p>
+          <p>We&rsquo;re partnered with 50+ Web3 communities, media outlets, trading communities, and the top KOLs across the country, a network that turns any activation into a movement.</p>
         </div>
         <div className="gwhy-card">
           <h3>Flagship Level Experience</h3>
@@ -22,7 +22,7 @@ export default function GNWhy() {
         </div>
         <div className="gwhy-card">
           <h3>Ideas That Actually Land</h3>
-          <p>From concept to execution, we bring a wide range of creative ideas and best in class activation delivery &mdash; built to make an impact, not just fill a room.</p>
+          <p>From concept to execution, we bring a wide range of creative ideas and best in class activation delivery, built to make an impact, not just fill a room.</p>
         </div>
       </div>
     </Reveal>

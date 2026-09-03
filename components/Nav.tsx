@@ -24,7 +24,7 @@ export default function Nav() {
           <Link href="/#partners">Partners</Link>
           <Link href="/#faq">FAQ</Link>
         </div>
-        <a className="navbtn" href="https://discord.gg/Mazal" target="_blank" rel="noopener">
+        <a className="navbtn" href="https://discord.gg/gzBmy2emg" target="_blank" rel="noopener">
           Join the community
         </a>
       </div>

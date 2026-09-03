@@ -26,7 +26,7 @@ export default function GNHero() {
           </Words>
         </h1>
         <p className="gsub">
-          GN Club is one of the most connected and established community networks in the Philippine Web3 scene &mdash; delivering the country&rsquo;s first live trading events, nationwide education programs, large scale activations, and flagship level experiences.
+          GN Club is one of the most connected and established community networks in the Philippine Web3 scene, delivering the country&rsquo;s first live trading events, nationwide education programs, large scale activations, and flagship level experiences.
         </p>
         <div className="gcta-row">
           <a className="gbtn gbtn-solid" href="#gn-partner">Partner with us ↗</a>

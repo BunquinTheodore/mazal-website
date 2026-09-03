@@ -8,9 +8,9 @@ import GNPartnerCTA from '@/components/gn/GNPartnerCTA';
 import GNFooter from '@/components/gn/GNFooter';
 
 export const metadata: Metadata = {
-  title: 'GN Club — The Network. The Experience. The Execution.',
+  title: 'GN Club: The Network. The Experience. The Execution.',
   description:
-    "GN Club is one of the most connected and established community networks in the Philippine Web3 scene — delivering the country's first live trading events, nationwide education programs, large-scale activations, and flagship-level experiences.",
+    "GN Club is one of the most connected and established community networks in the Philippine Web3 scene, delivering the country's first live trading events, nationwide education programs, large scale activations, and flagship level experiences.",
 };
 
 export default function GNClubPage() {

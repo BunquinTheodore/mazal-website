@@ -10,7 +10,7 @@ export default function CTA() {
           <h2><Words>Good fortune favors <span className="g">the prepared</span></Words></h2>
           <p className="sub" style={{ margin: '14px auto 0' }}>Join the community, take the free workshop, and start learning today.</p>
           <div className="ctabtns">
-            <a className="btn" href="https://discord.gg/Mazal" target="_blank" rel="noopener">Join the Discord</a>
+            <a className="btn" href="https://discord.gg/gzBmy2emg" target="_blank" rel="noopener">Join the Discord</a>
             <a className="btn ghost" href="#benefits">Start learning today</a>
           </div>
         </div>

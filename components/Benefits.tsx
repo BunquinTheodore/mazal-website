@@ -14,7 +14,7 @@ export default function Benefits() {
           <div className="bbody">
             <svg viewBox="0 0 24 24"><path d="M3 21V3M3 21h18M6 16l4-5 3 3 6-8" /></svg>
             <h3>Daily market analysis</h3>
-            <p>Plain language breakdowns of what&rsquo;s moving in crypto and gold &mdash; posted every trading day.</p>
+            <p>Plain language breakdowns of what&rsquo;s moving in crypto and gold, posted every trading day.</p>
           </div>
         </div>
         <div className="bcard">
@@ -62,7 +62,7 @@ export default function Benefits() {
           <div className="bbody">
             <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3" /></svg>
             <h3>Exclusive event access</h3>
-            <p>Members get access to all MAZAL events &mdash; including cash giveaways and amazing meetups.</p>
+            <p>Members get access to all MAZAL events, including cash giveaways and amazing meetups.</p>
           </div>
         </div>
         <div className="bcard">
@@ -70,7 +70,7 @@ export default function Benefits() {
           <div className="bbody">
             <svg viewBox="0 0 24 24"><path d="M4 8h13v7a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM17 9h1.5a2.5 2.5 0 0 1 0 5H17M7 3.5c0 1 .8 1 .8 2S7 6.5 7 7.5M11 3.5c0 1 .8 1 .8 2s-.8 1-.8 2" /></svg>
             <h3>Monthly free coffee meetups</h3>
-            <p>Free coffee meetups every month &mdash; connect with the community in person, no agenda needed.</p>
+            <p>Free coffee meetups every month, connect with the community in person, no agenda needed.</p>
           </div>
         </div>
         <div className="bcard perk">
@@ -78,7 +78,7 @@ export default function Benefits() {
           <div className="bbody">
             <svg viewBox="0 0 24 24"><path d="M12 2l2.4 5 5.6.7-4 3.9.9 5.6-4.9-2.7L7.1 17.2 8 11.6 4 7.7 9.6 7z" /></svg>
             <h3>Exclusive partner perks</h3>
-            <p>Member only benefits from our partners &mdash; including exclusive Medicity discounts.</p>
+            <p>Member only benefits from our partners, including exclusive Medicity discounts.</p>
           </div>
         </div>
       </Reveal>
@@ -87,7 +87,7 @@ export default function Benefits() {
           <div>
             <span className="eyebrow">Sample analysis</span>
             <h3 style={{ fontSize: '24px', margin: '16px 0 10px', letterSpacing: '.02em' }}>This is what analysis looks like inside</h3>
-            <p style={{ color: 'var(--t2)', fontSize: '15px', maxWidth: '400px' }}>MAZAL research notes break a move down in plain language &mdash; the catalyst, the price context, and the numbers that matter. Posted for members, free.</p>
+            <p style={{ color: 'var(--t2)', fontSize: '15px', maxWidth: '400px' }}>MAZAL research notes break a move down in plain language: the catalyst, the price context, and the numbers that matter. Posted for members, free.</p>
           </div>
           <img src="/assets/images/asset-020.jpg" alt="Sample MAZAL research note" />
         </div>
