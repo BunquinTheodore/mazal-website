@@ -61,7 +61,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 .heroimg img{border-radius:28px;border:1px solid var(--gstroke);box-shadow:0 30px 80px rgba(0,0,0,.6)}
 .heroimg .tag{position:absolute;left:22px;right:22px;bottom:22px;background:rgba(2,6,21,.82);border:1px solid var(--stroke);backdrop-filter:blur(8px);border-radius:14px;padding:12px 18px;font-size:13px;color:var(--t2)}
 .heroimg .tag b{color:var(--green);font-weight:800}
-.herocta{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px;padding-left:22px}
+.herocta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:22px}
 .heronote{margin-top:18px;font-size:13px;color:var(--t3);letter-spacing:.06em}
 @media(max-width:900px){.herogrid{grid-template-columns:1fr}.hero{padding:70px 0 60px}}
 /* about */
