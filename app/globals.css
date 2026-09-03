@@ -55,7 +55,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 /* hero */
 .hero{padding:90px 0 90px}
 .herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
-.hero h1{font-size:clamp(38px,5.6vw,72px);margin:22px 0 18px}
+.hero h1{font-size:clamp(34px,4.8vw,60px);margin:22px 0 18px;white-space:nowrap}
 .freechip{display:inline-flex;align-items:center;white-space:nowrap;background:var(--green);color:#05080a;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.2em;padding:9px 16px}
 .heroimg-inner{position:relative}
 .heroimg img{border-radius:28px;border:1px solid var(--gstroke);box-shadow:0 30px 80px rgba(0,0,0,.6)}

@@ -8,3 +8,6 @@ next-env.d.ts
 
 .vercel
 .env*.local
+
+# raw source photos (compressed web versions live in public/assets)
+/assets

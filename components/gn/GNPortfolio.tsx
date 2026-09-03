@@ -148,11 +148,11 @@ export default function GNPortfolio() {
           <p className="gmono gtag">Where community meets movement</p>
           <p className="gbody">GN Club isn't just about screens and charts. Every month we bring the community together through sport, staying active, staying connected, and proving that building strong minds means building strong bodies too. Same crew, new game every time.</p>
         </div>
-        <div className="gmedia gm1">
-          <div className="gcoming">
-            <div className="gbig">Coming Soon</div>
-            <p>Monthly Sporting Events · Stay Tuned</p>
-          </div>
+        <div className="gmedia gm4">
+          <figure><img src="/assets/images/asset-094.jpg" alt="Monthly sporting event, group photo at a pickleball court" loading="lazy" /></figure>
+          <figure><img src="/assets/images/asset-095.jpg" alt="Monthly sporting event, community gathered courtside" loading="lazy" /></figure>
+          <figure><img src="/assets/images/asset-096.jpg" alt="Monthly sporting event, members posing with paddles" loading="lazy" /></figure>
+          <figure><img src="/assets/images/asset-097.jpg" alt="Monthly sporting event, group photo with paddles" loading="lazy" /></figure>
         </div>
       </Reveal>
 
