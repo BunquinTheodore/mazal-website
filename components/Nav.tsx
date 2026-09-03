@@ -16,6 +16,7 @@ export default function Nav() {
         </Link>
         <div className="navlinks">
           <Link href="/#about">About</Link>
+          <Link href="/#highlights">Highlights</Link>
           <Link href="/#benefits">Benefits</Link>
           <Link href="/gn-club" className={`gn-tab${onGN ? ' active' : ''}`}>
             GN Club
