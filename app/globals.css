@@ -164,6 +164,24 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 .pcloud img:hover{opacity:1;transform:translateY(-2px)}
 .pnote{text-align:center;margin-top:34px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--t3);font-weight:600}
 @media(max-width:900px){.pcloud{gap:26px 34px}.pcloud img{height:36px}.pcloud.featured img{height:46px}}
+.pboxed{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;background:var(--card);border:1px solid var(--stroke);border-radius:12px;transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s ease,background .25s ease}
+.pboxed:hover{transform:translateY(-2px);border-color:var(--gstroke);background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(14,18,32,.9))}
+.pboxed img{height:46px;opacity:1}
+@media(max-width:900px){.pboxed img{height:36px}}
+.psub{text-align:center;margin-top:8px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--t3);font-weight:600}
+.pmrows{display:flex;flex-direction:column;gap:16px;margin-top:26px}
+.pmarquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.ptrack{display:flex;gap:16px;width:max-content;animation:pglide 14s linear infinite}
+.ptrack.rev{animation-name:pglideRev}
+.pmarquee:hover .ptrack{animation-play-state:paused}
+@keyframes pglide{to{transform:translateX(-50%)}}
+@keyframes pglideRev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.ptrack{animation:none}}
+.pchip{flex:0 0 auto;width:130px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:14px;background:var(--card);border:1px solid var(--stroke);border-radius:16px;transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s ease,background .25s ease}
+.pchip:hover{transform:translateY(-3px);border-color:var(--gstroke);background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(14,18,32,.9))}
+.pchip img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+@media(max-width:900px){.pchip{width:96px;padding:10px;border-radius:12px}}
+@media(max-width:560px){.pchip{width:78px;padding:8px}}
 /* testimonials */
 .trows{display:flex;flex-direction:column;gap:20px;margin-top:44px}
 .tmarquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}

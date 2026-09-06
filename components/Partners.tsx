@@ -1,57 +1,67 @@
 import Reveal from '@/components/Reveal';
 import Words from '@/components/Words';
 
+const COMMUNITY_PARTNERS = [
+  { name: 'Comunicado', src: '/assets/images/partners/comunicado.png' },
+  { name: 'BB', src: '/assets/images/partners/bbb.png' },
+  { name: 'Cryptita Plays', src: '/assets/images/partners/cryptita-plays.png' },
+  { name: 'CWDF', src: '/assets/images/partners/cwdf.png' },
+  { name: 'The Fourtune Group', src: '/assets/images/partners/fourtune-group.png' },
+  { name: 'Gainers Ground', src: '/assets/images/partners/gainers-ground.png' },
+  { name: 'HB', src: '/assets/images/partners/hb.png' },
+  { name: 'Icarus Falls', src: '/assets/images/partners/icarus-falls.png' },
+  { name: 'James 3.0', src: '/assets/images/partners/james3.png' },
+  { name: 'Market Footprints', src: '/assets/images/partners/market-footprints.png' },
+  { name: 'Mazal Traders', src: '/assets/images/partners/mazal-traders.png' },
+  { name: 'M', src: '/assets/images/partners/m-brand.png' },
+  { name: 'Nexus Grid', src: '/assets/images/partners/nexus-grid.png' },
+  { name: 'ACD', src: '/assets/images/partners/acd.png' },
+  { name: 'The Chaos House', src: '/assets/images/partners/chaos-house.png' },
+  { name: 'Triad', src: '/assets/images/partners/triad.png' },
+  { name: 'Twilight', src: '/assets/images/partners/twilight.png' },
+  { name: 'Community partner', src: '/assets/images/partners/fist.png' },
+  { name: 'Trading Pod', src: '/assets/images/partners/trading-pod.png' },
+  { name: 'Community partner', src: '/assets/images/partners/eagle.png' },
+  { name: 'TS', src: '/assets/images/partners/ts.png' },
+  { name: 'Trading Republic', src: '/assets/images/partners/trading-republic.png' },
+  { name: 'Wave3', src: '/assets/images/partners/wave3.png' },
+  { name: 'Web3 Bulacan', src: '/assets/images/partners/web3-bulacan.png' },
+];
+
+function chunk<T>(items: T[], size: number): T[][] {
+  const rows: T[][] = [];
+  for (let i = 0; i < items.length; i += size) rows.push(items.slice(i, i + size));
+  return rows;
+}
+
+function PartnerRow({ direction, items }: { direction: 'left' | 'right'; items: typeof COMMUNITY_PARTNERS }) {
+  return (
+    <div className="pmarquee">
+      <div className={`ptrack${direction === 'right' ? ' rev' : ''}`}>
+        {[...items, ...items].map((p, i) => (
+          <div className="pchip" key={`${p.name}-${direction}-${i}`}>
+            <img src={p.src} alt={p.name} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Partners() {
   return (
     <section id="partners">
       <Reveal as="div" className="wrap center rv">
         <span className="eyebrow">Our partners</span>
-        <h2><Words>Communities &amp; brands <span className="g">we work with</span></Words></h2>
+        <h2><Words>Communities &amp; brands<br /><span className="g">we work with</span></Words></h2>
       </Reveal>
       <Reveal as="div" className="wrap rv">
-        <div className="pcloud featured">
-          <img src="/assets/images/asset-022.png" alt="" />
-          <img src="/assets/images/asset-023.png" alt="" />
-          <img src="/assets/images/asset-024.png" alt="" />
+        <p className="psub">Community partners</p>
+        <div className="pmrows">
+          {chunk(COMMUNITY_PARTNERS, 6).map((row, i) => (
+            <PartnerRow key={i} direction={i % 2 === 0 ? 'right' : 'left'} items={row} />
+          ))}
         </div>
-        <div className="pcloud">
-          <img src="/assets/images/asset-025.png" alt="" />
-          <img src="/assets/images/asset-026.png" alt="" />
-          <img src="/assets/images/asset-027.png" alt="" />
-          <img src="/assets/images/asset-028.png" alt="" />
-          <img src="/assets/images/asset-029.png" alt="" />
-          <img src="/assets/images/asset-030.png" alt="" />
-          <img src="/assets/images/asset-031.png" alt="" />
-          <img src="/assets/images/asset-032.png" alt="" />
-          <img src="/assets/images/asset-033.png" alt="" />
-          <img src="/assets/images/asset-034.png" alt="" />
-          <img src="/assets/images/asset-035.png" alt="" />
-          <img src="/assets/images/asset-036.png" alt="" />
-          <img src="/assets/images/asset-037.png" alt="" />
-          <img src="/assets/images/asset-038.png" alt="" />
-          <img src="/assets/images/asset-039.png" alt="" />
-          <img src="/assets/images/asset-040.png" alt="" />
-          <img src="/assets/images/asset-041.png" alt="" />
-          <img src="/assets/images/asset-042.png" alt="" />
-          <img src="/assets/images/asset-043.png" alt="" />
-          <img src="/assets/images/asset-044.png" alt="" />
-          <img src="/assets/images/asset-045.png" alt="" />
-          <img src="/assets/images/asset-046.png" alt="" />
-          <img src="/assets/images/asset-047.png" alt="" />
-          <img src="/assets/images/asset-048.png" alt="" />
-          <img src="/assets/images/asset-049.png" alt="" />
-          <img src="/assets/images/asset-050.png" alt="" />
-          <img src="/assets/images/asset-051.png" alt="" />
-          <img src="/assets/images/asset-052.png" alt="" />
-          <img src="/assets/images/asset-053.png" alt="" />
-          <img src="/assets/images/asset-054.png" alt="" />
-          <img src="/assets/images/asset-055.png" alt="" />
-          <img src="/assets/images/asset-056.png" alt="" />
-          <img src="/assets/images/asset-057.png" alt="" />
-          <img src="/assets/images/asset-058.png" alt="" />
-          <img src="/assets/images/asset-059.png" alt="" />
-        </div>
-        <p className="pnote">Including a 50+ tier 3 media network</p>
       </Reveal>
     </section>
   );
