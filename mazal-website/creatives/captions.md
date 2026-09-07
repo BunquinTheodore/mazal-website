@@ -106,4 +106,4 @@ Enjoy member-only benefits from our partners — including exclusive Medicity di
 
 ---
 
-*All posts: tag @MazalOfficialPH, "Powered by GN Club" optional on events/partnership posts. Posting tip: benefits series works well 1 post/day, 6–8 PM PH time.*
+*All posts: tag @joinmazal, "Powered by GN Club" optional on events/partnership posts. Posting tip: benefits series works well 1 post/day, 6–8 PM PH time.*

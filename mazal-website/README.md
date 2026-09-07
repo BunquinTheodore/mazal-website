@@ -51,5 +51,5 @@ Originals were 1080p (~377 MB and ~334 MB) — re-encoded to 960×540, H.264 CRF
 
 ---
 
-*MAZAL — Trading Community PH · @MazalOfficialPH · Powered by GN Club.*
+*MAZAL — Trading Community PH · @joinmazal · Powered by GN Club.*
 *No fluff, no "get rich quick" — real education, community support, and opportunities to level up.*
