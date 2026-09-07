@@ -24,20 +24,6 @@ body{background:#000;color:var(--t1);font-family:'Archivo',system-ui,sans-serif;
 @media(prefers-reduced-motion:reduce){.orb{animation:none}}
 body:has(#gnclub-page) .bg-field{display:none}
 main,header,footer{position:relative;z-index:1}
-/* intro gate */
-.intro-gate{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(circle at 18% 18%,rgba(192,240,48,.16),transparent 55%),radial-gradient(circle at 86% 88%,rgba(1,40,169,.4),transparent 60%),#000}
-.intro-content{max-width:560px;display:flex;flex-direction:column;align-items:center;gap:16px}
-.intro-content img{height:56px}
-.intro-content h1{font-size:clamp(48px,10vw,96px);letter-spacing:-.02em;margin:4px 0 0}
-.intro-content .sub{max-width:440px;margin:0 auto}
-.intro-content .btn{margin-top:10px}
-.intro-hint{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3)}
-/* sound toggle */
-.sound-toggle{position:fixed;left:18px;bottom:18px;z-index:60;width:46px;height:46px;border-radius:50%;background:rgba(2,6,21,.85);border:1px solid var(--stroke);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:var(--green);cursor:pointer;transition:transform .2s ease,border-color .2s ease}
-.sound-toggle:hover{transform:scale(1.08);border-color:var(--gstroke)}
-.sound-toggle svg{width:20px;height:20px}
-.sound-toggle.muted{color:var(--t3)}
-@media(max-width:900px){.sound-toggle{bottom:24px}}
 /* word-by-word text reveal, driven by the ancestor .rv/.grv reveal state */
 .word{display:inline-block;opacity:0;transform:translateY(.5em);filter:blur(6px);transition:opacity .6s ease,transform .6s ease,filter .6s ease;transition-delay:calc(var(--i,0) * 35ms)}
 .rv.in .word,.grv.gin .word{opacity:1;transform:none;filter:blur(0)}

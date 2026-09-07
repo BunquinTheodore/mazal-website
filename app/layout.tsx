@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import SiteChrome from '@/components/SiteChrome';
 
 export const metadata: Metadata = {
   title: 'MAZAL Community: Good Fortune. Free Trading Community.',
@@ -18,7 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <span className="orb orb-c" />
         </div>
         {children}
-        <SiteChrome />
       </body>
     </html>
   );

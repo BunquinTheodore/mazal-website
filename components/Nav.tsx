@@ -19,7 +19,7 @@ export default function Nav() {
           <Link href="/#highlights">Highlights</Link>
           <Link href="/#benefits">Benefits</Link>
           <Link href="/gn-club" className={`gn-tab${onGN ? ' active' : ''}`}>
-            Portfolio
+            Events
           </Link>
           <Link href="/#performance">Performance</Link>
           <Link href="/#partners">Partners</Link>
