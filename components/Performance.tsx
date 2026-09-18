@@ -27,8 +27,13 @@ export default function Performance() {
             <p>Our lead trader grew an account from <b style={{ color: 'var(--green)' }}>$10K to $1M</b>, and the journey is documented inside the community: the setups, the drawdowns, and the risk management that made it possible.</p>
             <p style={{ marginTop: '12px' }}>Trade recaps and win breakdowns are shared openly in the Discord: what worked, what didn&apos;t, and why. Recent highlight: a 4 to 0 week opener on gold.</p>
           </div>
-          <div className="perf-vid-frame">
-            <AutoVideo controls src="/assets/images/asset-021.mp4" />
+          <div className="perf-media-row">
+            <div className="perf-vid-frame">
+              <AutoVideo src="/assets/images/asset-021.mp4" />
+            </div>
+            <div className="perf-vid-frame">
+              <img src="/assets/images/asset-036.png" alt="MAZAL weekly trading schedule" />
+            </div>
           </div>
         </div>
         <div className="disc">Disclaimer: Results shared by the community are for education only and are not typical or guaranteed. Trading involves substantial risk of loss. Nothing in this community is financial advice, always do your own research and never trade money you can&apos;t afford to lose.</div>

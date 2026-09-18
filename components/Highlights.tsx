@@ -18,11 +18,11 @@ export default function Highlights() {
         <div className="vidrow">
           <div className="vitem">
             <span className="vtag">Bull vs Bear</span>
-            <AutoVideo controls src="/videos/bull-vs-bear.mp4" />
+            <AutoVideo src="/videos/bull-vs-bear.mp4" />
           </div>
           <div className="vitem">
             <span className="vtag">Trading Battlegrounds 2026</span>
-            <AutoVideo controls src="/videos/trading-battlegrounds-2026.mp4" />
+            <AutoVideo src="/videos/trading-battlegrounds-2026.mp4" />
           </div>
         </div>
       </Reveal>

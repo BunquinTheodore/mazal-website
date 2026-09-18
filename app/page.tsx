@@ -6,7 +6,6 @@ import Benefits from '@/components/Benefits';
 import Performance from '@/components/Performance';
 import Partners from '@/components/Partners';
 import Testimonials from '@/components/Testimonials';
-import FreeStrip from '@/components/FreeStrip';
 import FAQ from '@/components/FAQ';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
@@ -24,7 +23,6 @@ export default function Home() {
         <Performance />
         <Partners />
         <Testimonials />
-        <FreeStrip />
         <FAQ />
         <CTA />
       </main>

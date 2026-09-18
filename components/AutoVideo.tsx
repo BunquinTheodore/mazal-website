@@ -38,7 +38,7 @@ export default function AutoVideo({
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       data-playing={playing}
       {...rest}
     />
