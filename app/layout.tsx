@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { ClickSoundProvider } from '@/components/ClickSoundProvider';
 
 export const metadata: Metadata = {
   title: 'MAZAL Community: Good Fortune. Free Trading Community.',
@@ -11,6 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <ClickSoundProvider />
+        <div className="gn-splash" aria-hidden="true">
+          <span className="gn-splash-title">MAZAL</span>
+        </div>
         <div className="bg-field" aria-hidden="true">
           <span className="orb orb-a" />
           <span className="orb orb-b" />
