@@ -113,7 +113,6 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
   .navbtn{white-space:nowrap;padding:9px 16px;font-size:12px}
   .navbtn-full{display:none}
   .navbtn-short{display:inline}
-  .navdrawer-links .navbtn .navbtn-short{display:none}
   .navdrawer-links .navbtn{white-space:normal;padding:15px 22px;font-size:14px}
 }
 @media(prefers-reduced-motion:reduce){.navdrawer,.navburger span{transition:none}}
@@ -188,8 +187,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
   .bmarquee-wrap{gap:10px}
 }
 .bcard{width:250px;flex-shrink:0;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(14,18,32,.64));backdrop-filter:blur(var(--blur-sm)) saturate(var(--sat-sm));-webkit-backdrop-filter:blur(var(--blur-sm)) saturate(var(--sat-sm));border:1px solid var(--stroke);border-radius:18px;overflow:hidden;box-shadow:0 1px 0 var(--glass-hi),0 20px 40px rgba(0,0,0,.28);transition:border-color .3s ease,transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease,background .3s ease;display:flex;flex-direction:column}
-@media(prefers-reduced-motion:reduce){.bcard{width:auto}}
 @media(max-width:900px){.bcard{width:210px}}
+@media(prefers-reduced-motion:reduce){.bcard{width:auto}}
 .bimg{width:100%;height:110px;object-fit:cover;object-position:center 32%;filter:saturate(.9) brightness(.82);border-bottom:1px solid var(--stroke);transition:transform .5s ease,filter .5s ease}
 .bcard:hover .bimg{transform:scale(1.05);filter:saturate(1) brightness(.9)}
 .pos-l{object-position:22% 38%}.pos-r{object-position:72% 40%}.pos-t{object-position:center 22%}.pos-c{object-position:center 45%}

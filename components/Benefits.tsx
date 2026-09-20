@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react';
 import Reveal from '@/components/Reveal';
 import Words from '@/components/Words';
+import { chunk } from '@/lib/utils';
 
 type Benefit = {
   img: string;
@@ -79,8 +80,8 @@ const BENEFITS: Benefit[] = [
 ];
 
 /** The nine benefit cards, chunked into the three rows the marquee scrolls. */
-const BENEFIT_ROWS = Array.from({ length: Math.ceil(BENEFITS.length / 3) }, (_, row) =>
-  BENEFITS.slice(row * 3, row * 3 + 3).map((item, i) => ({ item, index: row * 3 + i }))
+const BENEFIT_ROWS = chunk(BENEFITS, 3).map((row, rowIdx) =>
+  row.map((item, i) => ({ item, index: rowIdx * 3 + i }))
 );
 
 function BenefitCard({ item, index, hidden }: { item: Benefit; index: number; hidden: boolean }) {

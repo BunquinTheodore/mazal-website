@@ -1,5 +1,6 @@
 import Reveal from '@/components/Reveal';
 import Words from '@/components/Words';
+import { chunk } from '@/lib/utils';
 
 const COMMUNITY_PARTNERS = [
   { name: 'Comunicado', src: '/assets/images/partners/comunicado.png' },
@@ -27,12 +28,6 @@ const COMMUNITY_PARTNERS = [
   { name: 'Wave3', src: '/assets/images/partners/wave3.png' },
   { name: 'Web3 Bulacan', src: '/assets/images/partners/web3-bulacan.png' },
 ];
-
-function chunk<T>(items: T[], size: number): T[][] {
-  const rows: T[][] = [];
-  for (let i = 0; i < items.length; i += size) rows.push(items.slice(i, i + size));
-  return rows;
-}
 
 function PartnerRow({ direction, items }: { direction: 'left' | 'right'; items: typeof COMMUNITY_PARTNERS }) {
   return (

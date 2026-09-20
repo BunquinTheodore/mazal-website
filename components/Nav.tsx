@@ -6,10 +6,10 @@ import { usePathname } from 'next/navigation';
 
 const NAV_LINKS = [
   { href: '/#about', label: 'About' },
+  { href: '/#performance', label: 'Performance' },
   { href: '/#highlights', label: 'Highlights' },
   { href: '/#benefits', label: 'Benefits' },
   { href: '/gn-club', label: 'Events', gn: true },
-  { href: '/#performance', label: 'Performance' },
   { href: '/#partners', label: 'Partners' },
 ];
 
@@ -43,14 +43,15 @@ export default function Nav() {
           MAZAL
         </Link>
         <div className="navlinks">
-          <Link href="/#about">About</Link>
-          <Link href="/#highlights">Highlights</Link>
-          <Link href="/#benefits">Benefits</Link>
-          <Link href="/gn-club" className={`gn-tab${onGN ? ' active' : ''}`}>
-            Events
-          </Link>
-          <Link href="/#performance">Performance</Link>
-          <Link href="/#partners">Partners</Link>
+          {NAV_LINKS.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={l.gn ? `gn-tab${onGN ? ' active' : ''}` : undefined}
+            >
+              {l.label}
+            </Link>
+          ))}
         </div>
         <Link className="navbtn" href="/join">
           <span className="navbtn-full">Join the community</span>
