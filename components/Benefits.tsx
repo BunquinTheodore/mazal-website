@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
+import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import Words from '@/components/Words';
 import { chunk } from '@/lib/utils';
@@ -91,7 +92,9 @@ function BenefitCard({ item, index, hidden }: { item: Benefit; index: number; hi
       style={{ '--shine-delay': `${index * 0.4}s` } as CSSProperties}
       aria-hidden={hidden || undefined}
     >
-      <img className={`bimg ${item.pos}`} src={item.img} alt="" />
+      <div className="bimg-frame">
+        <Image className={`bimg ${item.pos}`} src={item.img} alt="" fill sizes="(max-width: 900px) 210px, 250px" />
+      </div>
       <div className="bbody">
         <svg viewBox="0 0 24 24">{item.icon}</svg>
         <h3>{item.title}</h3>
@@ -150,7 +153,7 @@ export default function Benefits() {
             <h3 style={{ fontSize: '24px', margin: '16px 0 10px', letterSpacing: '.02em' }}>This is what analysis looks like inside</h3>
             <p style={{ color: 'var(--t2)', fontSize: '15px', maxWidth: '400px' }}>MAZAL research notes break a move down in plain language: the catalyst, the price context, and the numbers that matter. Posted for members, free.</p>
           </div>
-          <img src="/assets/images/asset-020.jpg" alt="Sample MAZAL research note" />
+          <Image src="/assets/images/asset-020.jpg" alt="Sample MAZAL research note" width={900} height={900} sizes="(max-width: 900px) 100vw, 55vw" />
         </div>
       </Reveal>
     </section>

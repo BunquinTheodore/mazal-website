@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import AutoVideo from '@/components/AutoVideo';
 import Words from '@/components/Words';
@@ -32,7 +33,7 @@ export default function Performance() {
               <AutoVideo src="/assets/images/asset-021.mp4" />
             </div>
             <div className="perf-vid-frame">
-              <img src="/assets/images/asset-036.png" alt="MAZAL weekly trading schedule" />
+              <Image src="/assets/images/asset-036.png" alt="MAZAL weekly trading schedule" width={940} height={788} sizes="(max-width: 900px) 90vw, 45vw" />
             </div>
           </div>
         </div>

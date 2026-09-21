@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const NAV_LINKS = [
@@ -39,7 +40,7 @@ export default function Nav() {
     <nav>
       <div className="navin">
         <Link className="brand" href="/">
-          <img src="/assets/images/asset-006.png" alt="MAZAL logo" />
+          <Image src="/assets/images/asset-006.png" alt="MAZAL logo" width={130} height={120} />
           MAZAL
         </Link>
         <div className="navlinks">

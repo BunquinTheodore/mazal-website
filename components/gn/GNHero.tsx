@@ -1,18 +1,24 @@
+import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import Words from '@/components/Words';
+
+const GCOLLAGE_ASSETS = ['061', '062', '063', '064', '065', '066', '067', '068'];
 
 export default function GNHero() {
   return (
     <header className="ghero">
       <div className="gcollage" aria-hidden="true">
-        <img src="/assets/images/asset-061.jpg" alt="" />
-        <img src="/assets/images/asset-062.jpg" alt="" />
-        <img src="/assets/images/asset-063.jpg" alt="" />
-        <img src="/assets/images/asset-064.jpg" alt="" />
-        <img src="/assets/images/asset-065.jpg" alt="" />
-        <img src="/assets/images/asset-066.jpg" alt="" />
-        <img src="/assets/images/asset-067.jpg" alt="" />
-        <img src="/assets/images/asset-068.jpg" alt="" />
+        {GCOLLAGE_ASSETS.map((n) => (
+          <div className="gcell" key={n}>
+            <Image
+              src={`/assets/images/asset-${n}.jpg`}
+              alt=""
+              fill
+              sizes="25vw"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+        ))}
       </div>
       <Reveal as="div" className="gheroin grv" activeClass="gin">
         <p className="gmono geyebrow">PHILIPPINE WEB3 · TRADING · COMMUNITY</p>

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Footer() {
   return (
     <footer>
@@ -5,7 +7,7 @@ export default function Footer() {
         <div className="fgrid">
           <div>
             <div className="fbrand">
-              <img src="/assets/images/asset-006.png" alt="" />
+              <Image src="/assets/images/asset-006.png" alt="" width={130} height={120} />
               MAZAL
             </div>
             <p>A free trading community where all communities unite and meet. Good fortune, shared.</p>

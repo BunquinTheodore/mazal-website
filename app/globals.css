@@ -1,8 +1,8 @@
-@font-face{font-family:'Archivo';font-weight:400;src:url(/assets/fonts/asset-001.woff2) format('woff2')}
-@font-face{font-family:'Archivo';font-weight:600;src:url(/assets/fonts/asset-002.woff2) format('woff2')}
-@font-face{font-family:'Archivo';font-weight:800;src:url(/assets/fonts/asset-003.woff2) format('woff2')}
-@font-face{font-family:'Archivo';font-weight:900;src:url(/assets/fonts/asset-004.woff2) format('woff2')}
-@font-face{font-family:'SpaceG';font-weight:700;src:url(/assets/fonts/asset-005.woff2) format('woff2')}
+@font-face{font-family:'Archivo';font-weight:400;src:url(/assets/fonts/asset-001.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Archivo';font-weight:600;src:url(/assets/fonts/asset-002.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Archivo';font-weight:800;src:url(/assets/fonts/asset-003.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Archivo';font-weight:900;src:url(/assets/fonts/asset-004.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'SpaceG';font-weight:700;src:url(/assets/fonts/asset-005.woff2) format('woff2');font-display:swap}
 :root{
   --green:#C0F030;--green2:#9ECA1D;--blue:#0128A9;--navy:#0E1220;--ink:#020615;
   --t1:#FFFFFF;--t2:rgba(255,255,255,.72);--t3:rgba(255,255,255,.5);
@@ -12,6 +12,9 @@
   --blur-lg:26px;--sat-lg:170%;--blur-sm:16px;--sat-sm:150%;
   --glass-hi:rgba(255,255,255,.09) inset;
 }
+/* mobile GPUs pay disproportionately for backdrop-filter blur, and mobile
+   layouts stack many glass cards (.bcard rows, .card grids) in view at once */
+@media(max-width:600px){:root{--blur-lg:16px;--blur-sm:10px}}
 *{margin:0;padding:0;box-sizing:border-box;hyphens:none;-webkit-hyphens:none;-ms-hyphens:none}
 html{scroll-behavior:smooth}
 /* Intro splash: pure-CSS, fires on real page load/refresh only (this node
@@ -31,10 +34,12 @@ body{background:#000;color:var(--t1);font-family:'Archivo',system-ui,sans-serif;
 a,button,.btn,[role="button"],input,select,textarea{cursor:url('/assets/cursor.svg') 26 2,pointer}
 /* continuously animating liquid background field, same brand palette */
 .bg-field{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.orb{position:absolute;filter:blur(70px);will-change:transform,border-radius;mix-blend-mode:screen}
+.orb{position:absolute;filter:blur(48px);will-change:transform;mix-blend-mode:screen}
 .orb-a{width:62vw;height:62vw;left:-18vw;top:-22vw;background:radial-gradient(circle,rgba(192,240,48,.34) 0%,rgba(192,240,48,0) 68%);animation:orbA 24s ease-in-out infinite}
 .orb-b{width:64vw;height:64vw;right:-20vw;bottom:-26vw;background:radial-gradient(circle,rgba(1,40,169,.55) 0%,rgba(1,40,169,0) 68%);animation:orbB 28s ease-in-out infinite}
 .orb-c{width:42vw;height:42vw;left:32vw;top:22vh;background:radial-gradient(circle,rgba(158,202,29,.22) 0%,rgba(158,202,29,0) 70%);animation:orbC 20s ease-in-out infinite}
+/* mid/low-end mobile GPUs pay disproportionately for large-radius blur; shrink both blur and orb footprint */
+@media(max-width:900px){.orb{filter:blur(30px)}.orb-a,.orb-b{width:48vw;height:48vw}.orb-c{width:32vw;height:32vw}}
 @keyframes orbA{0%,100%{transform:translate(0,0) scale(1);border-radius:50%}33%{transform:translate(6vw,5vw) scale(1.12);border-radius:42% 58% 55% 45%/48% 42% 58% 52%}66%{transform:translate(-3vw,8vw) scale(.94);border-radius:58% 42% 47% 53%/55% 48% 52% 45%}}
 @keyframes orbB{0%,100%{transform:translate(0,0) scale(1);border-radius:50%}40%{transform:translate(-5vw,-6vw) scale(1.1);border-radius:46% 54% 60% 40%/40% 55% 45% 60%}70%{transform:translate(4vw,-3vw) scale(.96);border-radius:60% 40% 45% 55%/52% 48% 52% 48%}}
 @keyframes orbC{0%,100%{transform:translate(0,0) scale(1);border-radius:50%}50%{transform:translate(-4vw,4vw) scale(1.16);border-radius:44% 56% 52% 48%/56% 44% 56% 44%}}
@@ -42,9 +47,10 @@ a,button,.btn,[role="button"],input,select,textarea{cursor:url('/assets/cursor.s
 body:has(#gnclub-page) .bg-field{display:none}
 main,header,footer{position:relative;z-index:1}
 /* word-by-word text reveal, driven by the ancestor .rv/.grv reveal state */
-.word{display:inline-block;opacity:0;transform:translateY(.5em);filter:blur(6px);transition:opacity .6s ease,transform .6s ease,filter .6s ease;transition-delay:calc(var(--i,0) * 35ms)}
-.rv.in .word,.grv.gin .word{opacity:1;transform:none;filter:blur(0)}
-@media(prefers-reduced-motion:reduce){.word{opacity:1;transform:none;filter:none;transition:none}}
+/* opacity+transform only: filter (blur) animates per word on every reveal and forces a repaint rather than a compositor-only pass */
+.word{display:inline-block;opacity:0;transform:translateY(.5em);transition:opacity .6s ease,transform .6s ease;transition-delay:calc(var(--i,0) * 35ms)}
+.rv.in .word,.grv.gin .word{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.word{opacity:1;transform:none;transition:none}}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
@@ -122,7 +128,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 .hero h1{font-size:clamp(34px,4.8vw,60px);margin:16px 0 18px;white-space:nowrap}
 .freechip{display:inline-flex;align-items:center;white-space:nowrap;background:var(--green);color:#05080a;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.2em;padding:9px 16px}
 .heroimg-inner{position:relative}
-.heroimg img{border-radius:28px;border:1px solid var(--gstroke);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.heroimg img{width:100%;height:auto;aspect-ratio:1600/1066;border-radius:28px;border:1px solid var(--gstroke);box-shadow:0 30px 80px rgba(0,0,0,.6)}
 .heroimg .tag{position:absolute;left:22px;right:22px;bottom:22px;background:rgba(2,6,21,.82);border:1px solid var(--stroke);backdrop-filter:blur(8px);border-radius:14px;padding:12px 18px;font-size:13px;color:var(--t2)}
 .heroimg .tag b{color:var(--green);font-weight:800}
 .herocta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:22px}
@@ -170,6 +176,11 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 .bmarquee-row{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent)}
 .bmarquee-row:hover .bcard-marquee,.bmarquee-row:focus-within .bcard-marquee{animation-play-state:paused}
 .bmarquee-copy{display:flex;gap:16px;flex-shrink:0}
+/* the 2 duplicate copies exist only to make the loop seamless and are never
+   the focus of attention, so give their cards a flat fallback instead of
+   their own backdrop-filter blur instance (up to 18 of 27 blur surfaces per
+   page were redundant compositing cost) */
+.bmarquee-copy[aria-hidden="true"] .bcard{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(19,23,38,.88)}
 /* Three duplicated copies of each row travel exactly one copy's width
    (-33.3334%) so the loop wraps onto a visually identical copy with no
    visible seam. `reverse` flips direction for free via
@@ -189,7 +200,10 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 .bcard{width:250px;flex-shrink:0;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(14,18,32,.64));backdrop-filter:blur(var(--blur-sm)) saturate(var(--sat-sm));-webkit-backdrop-filter:blur(var(--blur-sm)) saturate(var(--sat-sm));border:1px solid var(--stroke);border-radius:18px;overflow:hidden;box-shadow:0 1px 0 var(--glass-hi),0 20px 40px rgba(0,0,0,.28);transition:border-color .3s ease,transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease,background .3s ease;display:flex;flex-direction:column}
 @media(max-width:900px){.bcard{width:210px}}
 @media(prefers-reduced-motion:reduce){.bcard{width:auto}}
-.bimg{width:100%;height:110px;object-fit:cover;object-position:center 32%;filter:saturate(.9) brightness(.82);border-bottom:1px solid var(--stroke);transition:transform .5s ease,filter .5s ease}
+/* frame owns the box (next/image `fill` needs a sized, positioned ancestor);
+   .bimg keeps the visual treatment on the img itself */
+.bimg-frame{position:relative;width:100%;height:110px;overflow:hidden;border-bottom:1px solid var(--stroke)}
+.bimg{object-fit:cover;object-position:center 32%;filter:saturate(.9) brightness(.82);transition:transform .5s ease,filter .5s ease}
 .bcard:hover .bimg{transform:scale(1.05);filter:saturate(1) brightness(.9)}
 .pos-l{object-position:22% 38%}.pos-r{object-position:72% 40%}.pos-t{object-position:center 22%}.pos-c{object-position:center 45%}
 .bbody{padding:16px}
@@ -667,7 +681,7 @@ body.gn-active{background:#000}
 /* hero */
 #gnclub-page .ghero{position:relative;min-height:86vh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--gline)}
 #gnclub-page .gcollage{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:4px;opacity:.4;filter:grayscale(32%) contrast(1.05)}
-#gnclub-page .gcollage img{width:100%;height:100%;object-fit:cover}
+#gnclub-page .gcollage .gcell{position:relative;width:100%;height:100%}
 #gnclub-page .ghero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 32% 55%,rgba(0,0,0,.87) 0%,rgba(0,0,0,.62) 45%,rgba(0,0,0,.85) 100%)}
 #gnclub-page .gheroin{position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;padding:96px 24px}
 #gnclub-page .ghero h1{font-size:clamp(40px,7.6vw,92px);color:#fff;margin:16px 0 0;text-shadow:0 4px 40px rgba(0,0,0,.9)}
@@ -713,14 +727,16 @@ body.gn-active{background:#000}
 #gnclub-page .gmE figure:nth-child(4) img{aspect-ratio:auto;height:100%}
 #gnclub-page .gm2{grid-template-columns:1fr;grid-template-rows:1fr 1fr}
 #gnclub-page .gm1{grid-template-columns:1fr}
-#gnclub-page .gmedia figure{overflow:hidden;border:1px solid rgba(198,245,46,.14);background:#000;min-height:0;margin:0}
+/* figures using next/image `fill` (GNPortfolio) need the aspect-ratio on
+   the figure itself, since the img is absolutely positioned to fill it */
+#gnclub-page .gmedia figure{position:relative;overflow:hidden;border:1px solid rgba(198,245,46,.14);background:#000;min-height:0;margin:0}
 #gnclub-page .gmedia img{width:100%;height:100%;object-fit:cover;filter:grayscale(10%);transition:transform .5s ease,filter .4s}
 #gnclub-page .gmedia figure:hover img{transform:scale(1.04);filter:grayscale(0)}
-#gnclub-page .gm4 img{aspect-ratio:4/3}
-#gnclub-page .gm3 figure:first-child img{aspect-ratio:16/7.2}
-#gnclub-page .gm3 img{aspect-ratio:4/3}
-#gnclub-page .gm2 img{aspect-ratio:16/8.5}
-#gnclub-page .gm1 img{aspect-ratio:16/9}
+#gnclub-page .gm4 figure{aspect-ratio:4/3}
+#gnclub-page .gm3 figure:first-child{aspect-ratio:16/7.2}
+#gnclub-page .gm3 figure{aspect-ratio:4/3}
+#gnclub-page .gm2 figure{aspect-ratio:16/8.5}
+#gnclub-page .gm1 figure{aspect-ratio:16/9}
 /* coming soon */
 #gnclub-page .gcoming{margin:14px;border:1px dashed var(--ggd);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;text-align:center;padding:40px 20px}
 #gnclub-page .gcoming .gbig{font-size:clamp(22px,3.2vw,38px);color:var(--gg);letter-spacing:.05em;font-weight:900;text-transform:uppercase}
@@ -756,5 +772,6 @@ body.gn-active{background:#000}
   #gnclub-page .gmE figure:nth-child(4){grid-row:auto}
   #gnclub-page .gmE figure img{aspect-ratio:4/3!important}
   #gnclub-page .gm3 figure:first-child,#gnclub-page .gm5 figure:first-child{grid-column:auto}
-  #gnclub-page .gm3 figure:first-child img,#gnclub-page .gm5 figure:first-child img{aspect-ratio:4/3}
+  #gnclub-page .gm3 figure:first-child{aspect-ratio:4/3}
+  #gnclub-page .gm5 figure:first-child img{aspect-ratio:4/3}
 }
