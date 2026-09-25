@@ -8,6 +8,24 @@ type Status = 'idle' | 'submitting' | 'success' | 'error';
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
 
+/* Redundant non-color cue for error text, alongside the red .err color. */
+function ErrorIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      style={{ verticalAlign: '-1px', flexShrink: 0 }}
+    >
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+      <path d="M12 7v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="12" cy="16.5" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
 export default function SignupForm({ workshopType }: { workshopType: 'beginner' | 'live' | 'jumpstart' }) {
   const [status, setStatus] = useState<Status>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -99,14 +117,22 @@ export default function SignupForm({ workshopType }: { workshopType: 'beginner' 
         <div className="field">
           <label htmlFor="fullName">Full name <span className="req">*</span></label>
           <input type="text" id="fullName" name="fullName" required placeholder="Your full name" />
-          {errors.fullName && <span className="err">{errors.fullName}</span>}
+          {errors.fullName && (
+            <span className="err">
+              <ErrorIcon /> {errors.fullName}
+            </span>
+          )}
         </div>
 
         <div className="field">
           <label htmlFor="proof">Proof of $50 USD deposit <span className="req">*</span></label>
           <input type="file" id="proof" name="proof" accept="image/jpeg,image/png" required />
           <span className="hint">JPG or PNG, max 10MB. Screenshot of your LBank deposit confirmation.</span>
-          {errors.proof && <span className="err">{errors.proof}</span>}
+          {errors.proof && (
+            <span className="err">
+              <ErrorIcon /> {errors.proof}
+            </span>
+          )}
         </div>
 
         <div className="field">
@@ -120,13 +146,21 @@ export default function SignupForm({ workshopType }: { workshopType: 'beginner' 
             pattern="[0-9]*"
             placeholder="Numbers only"
           />
-          {errors.lbankUid && <span className="err">{errors.lbankUid}</span>}
+          {errors.lbankUid && (
+            <span className="err">
+              <ErrorIcon /> {errors.lbankUid}
+            </span>
+          )}
         </div>
 
         <div className="field">
           <label htmlFor="message">Why do you want to learn trading? <span className="req">*</span></label>
           <textarea id="message" name="message" required rows={4} placeholder="Tell us a bit about yourself" />
-          {errors.message && <span className="err">{errors.message}</span>}
+          {errors.message && (
+            <span className="err">
+              <ErrorIcon /> {errors.message}
+            </span>
+          )}
         </div>
 
         <button type="submit" className="submitbtn" disabled={status === 'submitting'}>

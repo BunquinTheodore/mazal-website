@@ -130,6 +130,14 @@
   filter: grayscale(1) contrast(1.08) brightness(0.62);
 }
 
+.jp-hero-duotone {
+  position: absolute;
+  inset: 0;
+  background: #12100c;
+  mix-blend-mode: color;
+  opacity: 0.6;
+}
+
 .jp-hero-fade {
   position: absolute;
   inset: 0;
@@ -199,6 +207,7 @@
   font-size: 38px;
   margin-top: 2px;
   color: #ededed;
+  font-weight: 600;
 }
 
 .jp-subline {
@@ -232,6 +241,18 @@ a.jp-btn-white {
 a.jp-btn-white:hover {
   color: var(--jp-bg);
   opacity: 0.9;
+}
+
+a.jp-btn-white,
+a.jp-sticky-btn,
+.jp-form-wrap .submitbtn {
+  transition: transform 0.15s ease;
+}
+
+a.jp-btn-white:active,
+a.jp-sticky-btn:active,
+.jp-form-wrap .submitbtn:active {
+  transform: scale(0.97);
 }
 
 .jp-trust-row {
@@ -457,6 +478,14 @@ a.jp-btn-white:hover {
   filter: grayscale(1) contrast(1.08) brightness(0.6);
 }
 
+.jp-photo-strip-duotone {
+  position: absolute;
+  inset: 0;
+  background: #12100c;
+  mix-blend-mode: color;
+  opacity: 0.55;
+}
+
 .jp-photo-fade {
   position: absolute;
   inset: 0;
@@ -510,11 +539,34 @@ a.jp-btn-white:hover {
   color: var(--jp-white);
 }
 
+.jp-urgency-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 7px 12px;
+  border: 1px solid var(--jp-line);
+  border-radius: 2px;
+  background: var(--jp-card);
+}
+
+.jp-urgency-icon {
+  flex-shrink: 0;
+  color: var(--jp-ink-3);
+}
+
 .jp-signup-sub {
-  margin: 6px 0 0;
-  font-size: 13.5px;
+  margin: 0;
+  font-size: 12.5px;
   line-height: 1.5;
   color: var(--jp-ink-2);
+}
+
+.jp-signup-proof {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--jp-ink-3);
 }
 
 /* Scoped overrides for the real <SignupForm /> component so it matches the
@@ -809,4 +861,25 @@ a.jp-sticky-btn {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.2px;
+}
+
+/* ---------- Scroll reveal ---------- */
+
+.jp-rv {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.jp-rv.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jp-rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

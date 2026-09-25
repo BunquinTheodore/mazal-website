@@ -1,0 +1,76 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Jumpstart design refinements (PR review)",
+  "description": "Six scoped visual/UX refinements to the /jumpstart landing page: duotone hero/strip photos, scroll-reveal micro-interactions, an honest urgency badge, proof moved next to the sign-up form, a Fraunces 600 weight step on the hero headline, and a non-color error cue in the shared SignupForm used by /workshop, /live and /jumpstart.",
+  "steps": [
+    {
+      "directory": "app/jumpstart",
+      "title": "Scope of this change",
+      "description": "Situation: everything here is scoped to app/jumpstart/page.tsx, app/jumpstart/jumpstart.css, and (for one shared fix) components/workshop/SignupForm.tsx. Mechanism: this page intentionally does not import app/globals.css, so every new rule lives in jumpstart.css under the jp- prefix. Implication for the reviewer: nothing outside these three files should show up in the diff. Gotcha: SignupForm.tsx is shared by three routes, so its one change (step 8) needs to be checked against all three themes, not just this page's black-and-white one."
+    },
+    {
+      "file": "app/jumpstart/page.tsx",
+      "line": 45,
+      "title": "1. Duotone hero photo",
+      "description": "Situation: a new sibling div, .jp-hero-duotone, sits between the hero <Image> and the existing .jp-hero-fade gradient. Mechanism: see jumpstart.css line 133 for the actual blend. Implication: shadows now read as warm-black instead of flat gray-black, without breaking the monochrome read. Gotcha: order matters here, the duotone div must come before .jp-hero-fade in the DOM so the fade still sits on top and controls the fade-to-background at the bottom of the hero."
+    },
+    {
+      "file": "app/jumpstart/jumpstart.css",
+      "line": 133,
+      "title": "1b. The duotone recipe",
+      "description": "Situation: a very dark, barely-warm near-black (#12100c) laid over the grayscale photo with mix-blend-mode: color at 0.6 opacity. Mechanism: color blend mode only affects hue/saturation, so luminance (and therefore the grayscale look) is preserved, it just warms the shadows. Implication: still reads as black-and-white at a glance per the brief. Gotcha: this depends on .jp-hero already having overflow: hidden (it does, line ~120), otherwise this absolutely-positioned div would be fine here since it's inset:0 sized to its own parent, not oversized like a shine sweep."
+    },
+    {
+      "file": "app/jumpstart/jumpstart.css",
+      "line": 481,
+      "title": "1c. Same treatment on the photo-proof strip",
+      "description": "Situation: .jp-photo-strip-duotone mirrors the hero recipe at a slightly lower 0.55 opacity for the shorter, more caption-heavy strip. Mechanism: same #12100c / mix-blend-mode: color approach. Implication: keeps the two photo treatments visually consistent across the page. Gotcha: this strip's fade (.jp-photo-fade) is much stronger at the bottom for the caption, so the duotone's effect is more visible in the top half of the strip, that's expected."
+    },
+    {
+      "file": "app/jumpstart/jumpstart.css",
+      "line": 868,
+      "title": "2. Scroll-reveal: the CSS half",
+      "description": "Situation: .jp-rv / .jp-rv.in mirrors app/globals.css's .rv pattern (opacity 0 -> 1, translateY 24px -> 0, ~0.65s ease) but is NOT imported from globals.css, it's a local copy since this page deliberately has no dependency on it. Mechanism: Reveal.tsx's IntersectionObserver adds the class named by activeClass, which defaults to \"in\", onto the wrapped element once it's 12% visible. Implication: matches the rest of the site's entrance-animation feel without coupling this page to globals.css. Gotcha: the prefers-reduced-motion block directly below neutralizes the transform/transition, so reduced-motion users see content immediately, this satisfies the accessibility requirement for this specific animation."
+    },
+    {
+      "file": "app/jumpstart/page.tsx",
+      "line": 98,
+      "title": "2b. Scroll-reveal: the JSX half",
+      "description": "Situation: every major section past the hero (proof row, who it's for, value stack, how it works, guarantee, photo strip, sign-up panel, FAQ, repeat CTA) is now wrapped in <Reveal as=\"div\" className=\"...existing classes... jp-rv\">. Mechanism: Reveal forwards the ref and spreads props onto the chosen tag, so no existing className or structure was renamed, jp-rv was appended alongside. Implication for the reviewer: diff each wrapped block against its pre-change <div> and confirm only the tag and the trailing jp-rv class changed, nothing else moved. Gotcha: the hero itself and the footer/sticky-bar were deliberately left unwrapped, the hero is above the fold (no reveal needed) and the footer/sticky-bar are utility chrome, not narrative sections."
+    },
+    {
+      "file": "app/jumpstart/jumpstart.css",
+      "line": 233,
+      "title": "2c. Tactile pressed states",
+      "description": "Situation: a small block adds a 0.15s transform transition plus :active { transform: scale(0.97) } to the CTA button, the sticky-bar button, and the form's submit button. Implication: gives tap feedback on mobile, where this page's 430px canvas is primarily viewed. Gotcha: check this doesn't fight the disabled-state opacity styling on .submitbtn:disabled a few lines below, it doesn't since :active can't fire while the button is disabled."
+    },
+    {
+      "file": "app/jumpstart/page.tsx",
+      "line": 248,
+      "title": "3 & 4. Urgency badge and proof-near-form",
+      "description": "Situation: the existing \"Small batches. Once a session fills, applications close.\" copy (unchanged wording, per the brief's no-fabricated-scarcity constraint) is now wrapped in a bordered .jp-urgency-badge with a small clock/hourglass SVG, echoing the hero's .jp-eyebrow visual language. Right below it, a new .jp-signup-proof line reuses the existing $10K to $1M stat from the proof row higher up the page. Mechanism: both sit inside the sign-up panel's <div>, between the h2 and the .jp-form-wrap. Implication: the highest-intent moment (right before the form) now carries visual weight and a proof reminder without inventing new numbers. Gotcha: confirm no new stat was introduced, only the badge treatment and stat placement changed, the actual claims are identical to what already existed on the page."
+    },
+    {
+      "file": "app/jumpstart/jumpstart.css",
+      "line": 205,
+      "title": "5. Fraunces 600 on the headline accent",
+      "description": "Situation: .jp-h1-accent (the italic \"first trade, in one sitting.\" line inside the H1) now carries font-weight: 600. Mechanism: page.tsx's Fraunces font config was widened from weight ['400','500'] to ['400','500','600'] to make this weight available. Implication: sharpens the single most important headline moment without touching any other Fraunces usage (guarantee title, wordmark, etc. are untouched). Gotcha: this is additive to next/font/google's weight array, so it does pull one more font-weight file, that's the expected cost of this change."
+    },
+    {
+      "file": "components/workshop/SignupForm.tsx",
+      "line": 12,
+      "title": "6. Shared component: redundant error cue",
+      "description": "Situation: a small local ErrorIcon() component (12px circle-exclamation SVG, stroke=currentColor) is defined once and used by all four error spans below. Mechanism: currentColor inherits whatever red the surrounding .err class sets, jumpstart.css's #ff6b6b on this page, app/globals.css's #ff8a8a on /workshop and /live, so no color values were hardcoded. Implication: every validation error now has a non-color visual signal alongside the red text, addressing color-only error signaling. Gotcha: this file is shared by three routes; confirm the icon renders sanely against both the black-and-white jumpstart theme and the lime-green /workshop and /live theme, and that no validation logic, field order, or markup outside the four error spans was touched."
+    },
+    {
+      "file": "components/workshop/SignupForm.tsx",
+      "line": 120,
+      "title": "6b. All four call sites",
+      "description": "Situation: fullName (line 120), proof (line 131), lbankUid (line 149), and message (line 159) each wrap their error text as <ErrorIcon /> {errors.X} inside the existing <span className=\"err\">. Mechanism: purely additive, the conditional rendering (errors.X && ...) and the className are unchanged. Implication: consistent treatment across all four fields, per the brief. Gotcha: this is the last of the four, scroll up to confirm the other three follow the identical pattern with no drift."
+    },
+    {
+      "title": "Next steps for the reviewer",
+      "description": "All three files are still uncommitted (git status shows only these three modified, diffstat +143/-26). Confirm: TypeScript compiles clean (already verified with tsc --noEmit), no em dashes were introduced in new copy, and the jp-signup-panel's flex layout still reads correctly with the two new elements (badge + proof line) inside its first child div. Nothing was committed or pushed, this tour reflects the working tree as of the design pass."
+    }
+  ]
+}

@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Fraunces, Manrope } from 'next/font/google';
 import SignupForm from '@/components/workshop/SignupForm';
+import Reveal from '@/components/Reveal';
 import './jumpstart.css';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
   style: ['normal', 'italic'],
-  weight: ['400', '500'],
+  weight: ['400', '500', '600'],
   variable: '--jp-font-serif',
   display: 'swap',
 });
@@ -41,6 +42,7 @@ export default function JumpstartPage() {
           sizes="100vw"
           className="jp-hero-photo"
         />
+        <div className="jp-hero-duotone" aria-hidden="true" />
         <div className="jp-hero-fade" aria-hidden="true" />
 
         <div className="jp-header">
@@ -93,7 +95,7 @@ export default function JumpstartPage() {
       </div>
 
       {/* COMPACT PROOF ROW */}
-      <div className="jp-proof">
+      <Reveal as="div" className="jp-proof jp-rv">
         <div className="jp-proof-item">
           <div className="jp-serif jp-proof-value">$200M+</div>
           <div className="jp-proof-label">monthly volume</div>
@@ -106,10 +108,10 @@ export default function JumpstartPage() {
           <div className="jp-serif jp-proof-value">24</div>
           <div className="jp-proof-label">partners</div>
         </div>
-      </div>
+      </Reveal>
 
       {/* WHO IT'S FOR */}
-      <div className="jp-section jp-container">
+      <Reveal as="div" className="jp-section jp-container jp-rv">
         <h2 className="jp-serif jp-h2">Is this for you?</h2>
         <div className="jp-checklist">
           <div className="jp-check-row">
@@ -149,10 +151,10 @@ export default function JumpstartPage() {
             <p className="jp-check-text">Want to learn the right way, not from a random FB group</p>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* VALUE STACK: free vs exclusive */}
-      <div className="jp-section jp-container">
+      <Reveal as="div" className="jp-section jp-container jp-rv">
         <h2 className="jp-serif jp-h2">What&rsquo;s inside MAZAL</h2>
         <div className="jp-value-group">
           <div className="jp-value-head">
@@ -185,10 +187,10 @@ export default function JumpstartPage() {
           </div>
           <p className="jp-value-footnote">*No setup or alert guarantees profit.</p>
         </div>
-      </div>
+      </Reveal>
 
       {/* HOW IT WORKS */}
-      <div className="jp-section jp-container">
+      <Reveal as="div" className="jp-section jp-container jp-rv">
         <h2 className="jp-serif jp-h2">How it works</h2>
         <div className="jp-steps">
           <div className="jp-step">
@@ -206,10 +208,10 @@ export default function JumpstartPage() {
             <span className="jp-step-text">Get your workshop slot confirmed</span>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* GUARANTEE + KEY MESSAGE */}
-      <div className="jp-section">
+      <Reveal as="div" className="jp-section jp-rv">
         <div className="jp-guarantee">
           <p className="jp-serif jp-guarantee-title">We never touch your $50.</p>
           <p className="jp-guarantee-body">
@@ -217,10 +219,10 @@ export default function JumpstartPage() {
             deposit only unlocks Mazal Exclusive.
           </p>
         </div>
-      </div>
+      </Reveal>
 
       {/* PHOTO PROOF: diagonal-stripe placeholder strip (no real photos supplied yet) */}
-      <div className="jp-section">
+      <Reveal as="div" className="jp-section jp-rv">
         <div className="jp-photo-strip">
           <Image
           src="/assets/images/asset-086.jpg"
@@ -229,29 +231,37 @@ export default function JumpstartPage() {
           sizes="100vw"
           className="jp-photo-strip-photo"
         />
+          <div className="jp-photo-strip-duotone" aria-hidden="true" />
           <div className="jp-photo-fade" aria-hidden="true" />
           <div className="jp-photo-caption">
             <span className="jp-serif jp-photo-caption-title">Real people, real reps</span>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* SIGN-UP */}
       <div id="signup" className="jp-signup">
-        <div className="jp-signup-panel">
+        <Reveal as="div" className="jp-signup-panel jp-rv">
           <div>
             <span className="jp-signup-kicker">MAZAL x GN Club</span>
             <h2 className="jp-serif jp-signup-title">Claim your seat</h2>
-            <p className="jp-signup-sub">Small batches. Once a session fills, applications close.</p>
+            <div className="jp-urgency-badge">
+              <svg className="jp-urgency-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+                <path d="M12 7v5l3.5 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="jp-signup-sub">Small batches. Once a session fills, applications close.</span>
+            </div>
+            <p className="jp-signup-proof">$10K→$1M trader&rsquo;s growth, same community, documented.</p>
           </div>
           <div className="jp-form-wrap">
             <SignupForm workshopType="jumpstart" />
           </div>
-        </div>
+        </Reveal>
       </div>
 
       {/* FAQ */}
-      <div className="jp-section jp-container">
+      <Reveal as="div" className="jp-section jp-container jp-rv">
         <h2 className="jp-serif jp-h2">FAQ</h2>
         <div className="jp-steps">
           <div className="jp-faq-item">
@@ -274,14 +284,14 @@ export default function JumpstartPage() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* REPEAT CTA */}
-      <div className="jp-repeat-cta">
+      <Reveal as="div" className="jp-repeat-cta jp-rv">
         <a href="#signup" className="jp-btn-white">
           CLAIM YOUR FREE SEAT →
         </a>
-      </div>
+      </Reveal>
 
       {/* DISCLAIMER + FOOTER */}
       <footer className="jp-footer">
