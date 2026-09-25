@@ -74,7 +74,7 @@ section{padding:96px 0}
 nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid var(--stroke);transition:background .3s ease}
 .navin{max-width:var(--max);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:22px;letter-spacing:.1em}
-.brand img{height:30px}
+.brand img{height:30px;width:auto;aspect-ratio:130/120}
 .navlinks{display:flex;gap:26px;margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--t2)}
 .navlinks a:hover{color:var(--green)}
 .navbtn{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(160deg,rgba(230,255,150,.92),rgba(190,230,60,.85));backdrop-filter:blur(12px) saturate(var(--sat-lg));-webkit-backdrop-filter:blur(12px) saturate(var(--sat-lg));color:#05080a;font-weight:800;font-size:13px;letter-spacing:.06em;padding:11px 22px;border-radius:999px;border:1px solid rgba(240,255,215,.85);box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 0 34px rgba(192,240,48,.5);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
@@ -342,12 +342,12 @@ footer{border-top:1px solid var(--stroke);padding:56px 0 110px;color:var(--t3);f
   .fgrid a{padding:8px 0;margin-bottom:0}
 }
 .fbrand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.1em;color:var(--t1);margin-bottom:14px}
-.fbrand img{height:24px}
+.fbrand img{height:24px;width:auto;aspect-ratio:130/120}
 .legal{margin-top:44px;padding-top:22px;border-top:1px solid var(--stroke);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 #risk{margin-top:30px;font-size:12px;line-height:1.7;max-width:860px}
 /* powered chip bottom right */
 .powered{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;background:rgba(2,6,21,.85);border:1px solid var(--stroke);backdrop-filter:blur(10px);border-radius:999px;padding:8px 16px 8px 12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3)}
-.powered img{height:22px}
+.powered img{height:22px;width:auto;aspect-ratio:1/1}
 @media(max-width:900px){footer{padding-bottom:130px}}
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
