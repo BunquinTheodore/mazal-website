@@ -1,0 +1,813 @@
+/* Scoped stylesheet for /jumpstart. Every class is prefixed "jp-" so nothing
+   collides with the site's global lime-green house classes (.btn, .eyebrow,
+   .wherocta, .freechip, etc). This page intentionally does not import or
+   depend on app/globals.css beyond browser defaults. */
+
+.jp-page {
+  --jp-bg: #050505;
+  --jp-ink: #f2f2f2;
+  --jp-ink-2: #8c8c8c;
+  --jp-ink-3: #9a9a9a;
+  --jp-line: #2a2a2a;
+  --jp-line-2: #1a1a1a;
+  --jp-card: #0d0d0d;
+  --jp-card-2: #0b0b0b;
+  --jp-white: #ffffff;
+
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: var(--jp-bg);
+  color: var(--jp-ink);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 96px;
+  font-family: var(--jp-font-sans), 'Manrope', sans-serif;
+}
+
+.jp-page *,
+.jp-page *::before,
+.jp-page *::after {
+  box-sizing: border-box;
+}
+
+.jp-page a {
+  color: var(--jp-white);
+  text-decoration: none;
+}
+
+.jp-page a:hover {
+  color: #c9c9c9;
+}
+
+.jp-serif {
+  font-family: var(--jp-font-serif), 'Fraunces', serif;
+}
+
+.jp-accent {
+  font-family: var(--jp-font-serif), 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.jp-page button {
+  cursor: pointer;
+  font-family: var(--jp-font-sans), 'Manrope', sans-serif;
+}
+
+.jp-container {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+
+.jp-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 22px 0;
+}
+
+.jp-header-inner {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jp-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.jp-wordmark-name {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--jp-white);
+}
+
+.jp-wordmark-tag {
+  font-size: 12px;
+  color: #b8b8b8;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.jp-discord-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 2px;
+  background: var(--jp-card);
+  border: 1px solid var(--jp-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ---------- Hero ---------- */
+
+.jp-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
+.jp-hero-stripes {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(135deg, #1c1c1c, #1c1c1c 14px, #111111 14px, #111111 28px);
+}
+
+.jp-hero-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 2, 2, 0.8) 0%,
+    rgba(2, 2, 2, 0.55) 28%,
+    rgba(2, 2, 2, 0.62) 62%,
+    #050505 100%
+  );
+}
+
+.jp-hero-body {
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 18px;
+  padding: 28px 22px 32px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.jp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 14px;
+  border: 1px solid var(--jp-line);
+  border-radius: 2px;
+  background: var(--jp-card);
+}
+
+.jp-eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--jp-white);
+  flex-shrink: 0;
+}
+
+.jp-eyebrow-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ededed;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.jp-h1 {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.16;
+  font-weight: 500;
+  color: var(--jp-white);
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+}
+
+.jp-h1-accent {
+  display: block;
+  font-size: 38px;
+  margin-top: 2px;
+  color: #ededed;
+}
+
+.jp-subline {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #d2d2d2;
+  max-width: 340px;
+}
+
+.jp-subline strong {
+  color: var(--jp-white);
+  font-weight: 600;
+}
+
+a.jp-btn-white {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  padding: 17px 24px;
+  border-radius: 2px;
+  background: var(--jp-white);
+  color: var(--jp-bg);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border: none;
+}
+
+a.jp-btn-white:hover {
+  color: var(--jp-bg);
+  opacity: 0.9;
+}
+
+.jp-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #b8b8b8;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- Proof row ---------- */
+
+.jp-section {
+  padding: 0 22px 32px;
+}
+
+.jp-proof {
+  margin: 24px 22px 32px;
+  display: flex;
+  border: 1px solid var(--jp-line);
+  border-radius: 2px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.jp-proof-item {
+  flex: 1;
+  text-align: center;
+  padding: 16px 8px;
+  border-right: 1px solid var(--jp-line);
+}
+
+.jp-proof-item:last-child {
+  border-right: none;
+}
+
+.jp-proof-value {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--jp-white);
+}
+
+.jp-proof-label {
+  font-size: 12px;
+  color: var(--jp-ink-2);
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+/* ---------- Headings ---------- */
+
+.jp-h2 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--jp-white);
+}
+
+/* ---------- Checklist ---------- */
+
+.jp-checklist {
+  border: 1px solid var(--jp-line);
+  padding: 4px;
+}
+
+.jp-check-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+}
+
+.jp-check-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.jp-check-text {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: #dadada;
+}
+
+/* ---------- Value stack ---------- */
+
+.jp-value-group {
+  margin-bottom: 18px;
+}
+
+.jp-value-group:last-child {
+  margin-bottom: 0;
+}
+
+.jp-value-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 9px;
+  flex-wrap: wrap;
+}
+
+.jp-value-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--jp-white);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.jp-value-note {
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+.jp-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.jp-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border: 1px solid var(--jp-line);
+  border-radius: 2px;
+  font-size: 13px;
+  color: #dadada;
+  background: var(--jp-card-2);
+}
+
+.jp-pill-x {
+  border-color: var(--jp-white);
+  color: #f2f2f2;
+}
+
+.jp-value-footnote {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+/* ---------- How it works ---------- */
+
+.jp-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--jp-line-2);
+}
+
+.jp-step {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--jp-card-2);
+}
+
+.jp-step-num {
+  font-size: 20px;
+  font-weight: 500;
+  color: #3a3a3a;
+  width: 22px;
+  flex-shrink: 0;
+}
+
+.jp-step-text {
+  font-size: 14.5px;
+  color: #dadada;
+}
+
+.jp-step-text strong {
+  color: #f2f2f2;
+}
+
+/* ---------- Guarantee ---------- */
+
+.jp-guarantee {
+  border: 1px solid var(--jp-white);
+  padding: 22px 22px;
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.jp-guarantee-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--jp-white);
+  font-weight: 500;
+}
+
+.jp-guarantee-body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #9a9a9a;
+}
+
+/* ---------- Photo strip ---------- */
+
+.jp-photo-strip {
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.jp-photo-stripes {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(135deg, #181818, #181818 12px, #0e0e0e 12px, #0e0e0e 24px);
+}
+
+.jp-photo-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2, 2, 2, 0.15) 0%, rgba(2, 2, 2, 0.85) 100%);
+}
+
+.jp-photo-caption {
+  position: relative;
+  z-index: 1;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.jp-photo-caption-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--jp-white);
+}
+
+/* ---------- Sign-up ---------- */
+
+.jp-signup {
+  padding: 0 22px 32px;
+  scroll-margin-top: 24px;
+}
+
+.jp-signup-panel {
+  border: 1px solid var(--jp-white);
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.jp-signup-kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--jp-ink-2);
+}
+
+.jp-signup-title {
+  margin: 8px 0 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--jp-white);
+}
+
+.jp-signup-sub {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--jp-ink-2);
+}
+
+/* Scoped overrides for the real <SignupForm /> component so it matches the
+   monochrome design exactly, without forking or renaming its markup. */
+
+.jp-form-wrap .gnclub-form-panel {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.jp-form-wrap form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.jp-form-wrap .field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.jp-form-wrap .honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.jp-form-wrap label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--jp-ink-2);
+  margin-bottom: 0;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-family: var(--jp-font-sans), 'Manrope', sans-serif;
+}
+
+.jp-form-wrap label .req {
+  color: var(--jp-ink-2);
+}
+
+.jp-form-wrap input,
+.jp-form-wrap textarea {
+  font-family: var(--jp-font-sans), 'Manrope', sans-serif;
+  font-size: 16px;
+  color: var(--jp-ink);
+  background: var(--jp-card);
+  border: 1px solid var(--jp-line);
+  border-radius: 2px;
+  padding: 14px 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.jp-form-wrap input::placeholder,
+.jp-form-wrap textarea::placeholder {
+  color: #5c5c5c;
+}
+
+.jp-form-wrap input:focus,
+.jp-form-wrap textarea:focus {
+  outline: none;
+  border-color: var(--jp-white);
+}
+
+.jp-form-wrap input[type='file'] {
+  padding: 12px 14px;
+  color: var(--jp-ink-3);
+}
+
+.jp-form-wrap .hint {
+  display: block;
+  font-size: 12px;
+  color: var(--jp-ink-3);
+  margin-top: 6px;
+}
+
+.jp-form-wrap .err {
+  display: block;
+  font-size: 12px;
+  color: #ff6b6b;
+  margin-top: 4px;
+}
+
+.jp-form-wrap .submitbtn {
+  width: 100%;
+  padding: 17px 24px;
+  border-radius: 2px;
+  background: var(--jp-white);
+  color: var(--jp-bg);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border: none;
+  margin-top: 4px;
+}
+
+.jp-form-wrap .submitbtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.jp-form-wrap .submitbtn::after {
+  content: ' \2192';
+}
+
+.jp-form-wrap .formmsg.error {
+  font-size: 13px;
+  color: #ff6b6b;
+}
+
+.jp-form-wrap .wsuccess {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.jp-form-wrap .wsuccess-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--jp-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--jp-white);
+}
+
+.jp-form-wrap .wsuccess h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--jp-white);
+  font-family: var(--jp-font-serif), 'Fraunces', serif;
+}
+
+.jp-form-wrap .wsuccess p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--jp-ink-2);
+}
+
+.jp-form-wrap .wsuccess .btn {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 13px 22px;
+  border-radius: 2px;
+  background: var(--jp-white);
+  color: var(--jp-bg);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ---------- FAQ ---------- */
+
+.jp-faq-item {
+  padding: 16px;
+  background: var(--jp-card-2);
+}
+
+.jp-faq-q {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f2f2f2;
+  margin-bottom: 4px;
+}
+
+.jp-faq-a {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--jp-ink-2);
+}
+
+/* ---------- Repeat CTA ---------- */
+
+.jp-repeat-cta {
+  padding: 0 22px 32px;
+  text-align: center;
+}
+
+.jp-repeat-cta .jp-btn-white {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* ---------- Footer / disclaimer ---------- */
+
+.jp-footer {
+  border-top: 1px solid var(--jp-line-2);
+  padding: 24px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 560px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.jp-footer-disclaimer {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #9a9a9a;
+}
+
+.jp-footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--jp-ink-2);
+}
+
+.jp-footer-meta .jp-serif {
+  color: #f2f2f2;
+  font-size: 15px;
+}
+
+.jp-footer-meta a {
+  color: #c9c9c9;
+}
+
+.jp-footer-meta-muted {
+  color: #9a9a9a;
+}
+
+/* ---------- Sticky mobile CTA ---------- */
+
+.jp-sticky-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  padding: 12px 16px;
+  background: var(--jp-bg);
+  border-top: 1px solid var(--jp-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.jp-sticky-bar-inner {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.jp-sticky-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  min-width: 0;
+}
+
+.jp-sticky-copy-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f2f2f2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jp-sticky-copy-sub {
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+a.jp-sticky-btn {
+  flex-shrink: 0;
+  padding: 12px 20px;
+  border-radius: 2px;
+  background: var(--jp-white);
+  color: var(--jp-bg);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}

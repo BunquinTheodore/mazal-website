@@ -1,16 +1,22 @@
 import type { Metadata } from 'next';
-import Nav from '@/components/Nav';
-import Reveal from '@/components/Reveal';
-import Words from '@/components/Words';
-import WorkshopHero from '@/components/workshop/WorkshopHero';
-import WhoItsFor from '@/components/workshop/WhoItsFor';
-import PhotoGallery, { PhotoSlot } from '@/components/workshop/PhotoGallery';
-import HowItWorks from '@/components/workshop/HowItWorks';
-import Perks from '@/components/workshop/Perks';
+import { Fraunces, Manrope } from 'next/font/google';
 import SignupForm from '@/components/workshop/SignupForm';
-import WorkshopFAQ from '@/components/workshop/WorkshopFAQ';
-import StickyJoinBar from '@/components/workshop/StickyJoinBar';
-import RiskDisclaimer from '@/components/workshop/RiskDisclaimer';
+import './jumpstart.css';
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: ['400', '500'],
+  variable: '--jp-font-serif',
+  display: 'swap',
+});
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--jp-font-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Free Beginner Trading Jumpstart | MAZAL',
@@ -18,96 +24,289 @@ export const metadata: Metadata = {
     'Go from zero to your first trade, in one sitting. Join the free MAZAL Beginner Trading Jumpstart, powered by GN Club.',
 };
 
-const jumpstartGallery: PhotoSlot[] = [
-  { filename: 'trading-01.jpg', alt: 'Participants at the MAZAL trading competition focused on their screens', description: 'Wide shot of competitors at their desks during the trading competition' },
-  { filename: 'trading-02.jpg', alt: 'A MAZAL member celebrating a winning trade', description: 'Candid reaction shot: excitement after a good trade' },
-  { filename: 'trading-03.jpg', alt: 'Close-up of a trading dashboard on a laptop screen', description: 'Close-up of charts and dashboard on a competitor’s laptop' },
-  { filename: 'trading-04.jpg', alt: 'MAZAL mentor helping a participant at the competition', description: 'Mentor or organizer helping a participant one-on-one' },
-];
+const DISCORD_URL = 'https://discord.gg/gzBmy2emg';
+const X_URL = 'https://x.com/joinmazal';
 
 export default function JumpstartPage() {
   return (
-    <>
-      <Nav />
-      <div className="wpage">
-        <main>
-          <WorkshopHero
-            eyebrow="Mazal Beginner Trading Jumpstart"
-            headline={<>Go from zero to your<br /><span className="g">first trade, in one sitting.</span></>}
-            subline="A free, live beginner workshop by MAZAL, powered by GN Club. No jargon, no scammy FB groups."
-            ctaLabel="Claim Your Free Seat"
-          />
+    <div className={`jp-page ${fraunces.variable} ${manrope.variable}`}>
+      {/* HERO: diagonal-stripe placeholder background, nav + copy on top */}
+      <div className="jp-hero">
+        <div className="jp-hero-stripes" aria-hidden="true" />
+        <div className="jp-hero-fade" aria-hidden="true" />
 
-          <div className="wrap">
-            <div className="wkeymsg">
-              The jumpstart is <b>FREE</b>. We just want committed learners, and depositing is a form of
-              commitment. Your $50 stays in your own LBank account.
+        <div className="jp-header">
+          <div className="jp-header-inner">
+            <a href="/" className="jp-wordmark">
+              <span className="jp-serif jp-wordmark-name">MAZAL</span>
+              <span className="jp-wordmark-tag">A GN Club Community</span>
+            </a>
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="jp-discord-btn"
+              aria-label="Join MAZAL on Discord"
+            >
+              <svg width="18" height="14" viewBox="0 0 24 20" fill="none">
+                <path
+                  d="M19.5 2.5C18 1.8 16.4 1.3 14.7 1c-.2.4-.5 1-.6 1.4-1.8-.3-3.5-.3-5.3 0-.2-.4-.4-1-.6-1.4-1.7.3-3.3.8-4.8 1.5C.6 7 -.3 11.4.1 15.8c1.9 1.4 3.7 2.2 5.5 2.8.4-.6.8-1.3 1.1-2-.6-.2-1.2-.5-1.7-.9.1-.1.3-.2.4-.3 3.4 1.6 7.1 1.6 10.4 0 .1.1.3.2.4.3-.5.4-1.1.7-1.7.9.3.7.7 1.4 1.1 2 1.8-.6 3.6-1.4 5.5-2.8.5-5.1-.8-9.5-3.6-13.3ZM8 12.9c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.9 2.1-1.9 2.1Zm8 0c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.9 2.1-1.9 2.1Z"
+                  fill="#E4E4E4"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div className="jp-hero-body">
+          <div className="jp-eyebrow">
+            <span className="jp-eyebrow-dot" aria-hidden="true" />
+            <span className="jp-eyebrow-text">The Beginner Trading Jumpstart</span>
+          </div>
+          <h1 className="jp-serif jp-h1">
+            Go from zero to your
+            <span className="jp-accent jp-h1-accent">first trade, in one sitting.</span>
+          </h1>
+          <p className="jp-subline">
+            A free, live beginner workshop by <strong>MAZAL</strong>, powered by GN Club. No jargon, no
+            scammy FB groups.
+          </p>
+          <a href="#signup" className="jp-btn-white">
+            CLAIM YOUR FREE SEAT →
+          </a>
+          <ul className="jp-trust-row">
+            <li>0% held by MAZAL</li>
+            <li aria-hidden="true">·</li>
+            <li>No experience needed</li>
+            <li aria-hidden="true">·</li>
+            <li>Small batches</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* COMPACT PROOF ROW */}
+      <div className="jp-proof">
+        <div className="jp-proof-item">
+          <div className="jp-serif jp-proof-value">$200M+</div>
+          <div className="jp-proof-label">monthly volume</div>
+        </div>
+        <div className="jp-proof-item">
+          <div className="jp-serif jp-proof-value">$10K→$1M</div>
+          <div className="jp-proof-label">trader&rsquo;s growth</div>
+        </div>
+        <div className="jp-proof-item">
+          <div className="jp-serif jp-proof-value">24</div>
+          <div className="jp-proof-label">partners</div>
+        </div>
+      </div>
+
+      {/* WHO IT'S FOR */}
+      <div className="jp-section jp-container">
+        <h2 className="jp-serif jp-h2">Is this for you?</h2>
+        <div className="jp-checklist">
+          <div className="jp-check-row">
+            <svg className="jp-check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12l5 5L20 7"
+                stroke="#FFFFFF"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <p className="jp-check-text">Never traded before, not even once</p>
+          </div>
+          <div className="jp-check-row">
+            <svg className="jp-check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12l5 5L20 7"
+                stroke="#FFFFFF"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <p className="jp-check-text">Curious about crypto, don&rsquo;t know where to start</p>
+          </div>
+          <div className="jp-check-row">
+            <svg className="jp-check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12l5 5L20 7"
+                stroke="#FFFFFF"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <p className="jp-check-text">Want to learn the right way, not from a random FB group</p>
+          </div>
+        </div>
+      </div>
+
+      {/* VALUE STACK: free vs exclusive */}
+      <div className="jp-section jp-container">
+        <h2 className="jp-serif jp-h2">What&rsquo;s inside MAZAL</h2>
+        <div className="jp-value-group">
+          <div className="jp-value-head">
+            <span className="jp-value-title">Free, forever</span>
+            <span className="jp-value-note">no deposit required</span>
+          </div>
+          <div className="jp-pill-row">
+            <span className="jp-pill">Daily market analysis</span>
+            <span className="jp-pill">Live trading sessions</span>
+            <span className="jp-pill">8-part workshop</span>
+            <span className="jp-pill">Discord &amp; mentorship</span>
+            <span className="jp-pill">Events &amp; meetups</span>
+            <span className="jp-pill">Partner perks</span>
+          </div>
+        </div>
+        <div className="jp-value-group">
+          <div className="jp-value-head">
+            <span className="jp-value-title">Mazal Exclusive</span>
+            <span className="jp-value-note">unlocked with your $50 deposit</span>
+          </div>
+          <div className="jp-pill-row">
+            <span className="jp-pill jp-pill-x">Elite trader access</span>
+            <span className="jp-pill jp-pill-x">Trade setups &amp; alerts*</span>
+            <span className="jp-pill jp-pill-x">Jobs &amp; referrals</span>
+            <span className="jp-pill jp-pill-x">1-on-1 tips</span>
+            <span className="jp-pill jp-pill-x">Priority support</span>
+            <span className="jp-pill jp-pill-x">Early access</span>
+            <span className="jp-pill jp-pill-x">Elite badge</span>
+            <span className="jp-pill jp-pill-x">Merch giveaway</span>
+          </div>
+          <p className="jp-value-footnote">*No setup or alert guarantees profit.</p>
+        </div>
+      </div>
+
+      {/* HOW IT WORKS */}
+      <div className="jp-section jp-container">
+        <h2 className="jp-serif jp-h2">How it works</h2>
+        <div className="jp-steps">
+          <div className="jp-step">
+            <span className="jp-serif jp-step-num">01</span>
+            <span className="jp-step-text">
+              Deposit $50 USD, code <strong>LBANKSEA</strong>
+            </span>
+          </div>
+          <div className="jp-step">
+            <span className="jp-serif jp-step-num">02</span>
+            <span className="jp-step-text">Fill up the form below</span>
+          </div>
+          <div className="jp-step">
+            <span className="jp-serif jp-step-num">03</span>
+            <span className="jp-step-text">Get your workshop slot confirmed</span>
+          </div>
+        </div>
+      </div>
+
+      {/* GUARANTEE + KEY MESSAGE */}
+      <div className="jp-section">
+        <div className="jp-guarantee">
+          <p className="jp-serif jp-guarantee-title">We never touch your $50.</p>
+          <p className="jp-guarantee-body">
+            It stays in your own LBank account the whole time. The workshop itself is 100% free; the
+            deposit only unlocks Mazal Exclusive.
+          </p>
+        </div>
+      </div>
+
+      {/* PHOTO PROOF: diagonal-stripe placeholder strip (no real photos supplied yet) */}
+      <div className="jp-section">
+        <div className="jp-photo-strip">
+          <div className="jp-photo-stripes" aria-hidden="true" />
+          <div className="jp-photo-fade" aria-hidden="true" />
+          <div className="jp-photo-caption">
+            <span className="jp-serif jp-photo-caption-title">Real people, real reps</span>
+          </div>
+        </div>
+      </div>
+
+      {/* SIGN-UP */}
+      <div id="signup" className="jp-signup">
+        <div className="jp-signup-panel">
+          <div>
+            <span className="jp-signup-kicker">MAZAL x GN Club</span>
+            <h2 className="jp-serif jp-signup-title">Claim your seat</h2>
+            <p className="jp-signup-sub">Small batches. Once a session fills, applications close.</p>
+          </div>
+          <div className="jp-form-wrap">
+            <SignupForm workshopType="jumpstart" />
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ */}
+      <div className="jp-section jp-container">
+        <h2 className="jp-serif jp-h2">FAQ</h2>
+        <div className="jp-steps">
+          <div className="jp-faq-item">
+            <div className="jp-faq-q">Is it really free?</div>
+            <div className="jp-faq-a">
+              Yes. The community and workshop stay free. The $50 is optional and only unlocks Exclusive.
             </div>
           </div>
-
-          <WhoItsFor
-            items={[
-              'Never traded before, not even once',
-              'Curious about crypto, but don’t know where to start',
-              'Want to learn the right way, not from a random FB group',
-            ]}
-          />
-
-          <section id="gallery">
-            <Reveal as="div" className="wrap center rv">
-              <span className="eyebrow">Real people, real reps</span>
-              <h2><Words>See the <span className="g">community</span> in action</Words></h2>
-              <p className="sub" style={{ margin: '0 auto' }}>Photos from past MAZAL trading competitions and community events.</p>
-            </Reveal>
-            <PhotoGallery
-              hero={{ filename: 'trading-hero.jpg', alt: 'Wide hero shot of the MAZAL trading competition floor', description: 'Wide hero shot: full room/venue of the trading competition' }}
-              grid={jumpstartGallery}
-              layout="grid"
-            />
-          </section>
-
-          <HowItWorks
-            steps={[
-              { title: 'Deposit $50 USD', body: 'Deposit $50 USD to your own LBank account, using code LBANKSEA. This money stays yours, always.' },
-              { title: 'Fill up the form', body: 'Submit the sign-up form below with your proof of deposit and a few details.' },
-              { title: 'Get your slot', body: 'We confirm your workshop slot and send you everything you need for jumpstart day.' },
-            ]}
-          />
-
-          <Perks />
-
-          <section id="signup">
-            <Reveal as="div" className="wrap center rv">
-              <span className="eyebrow">Claim your seat</span>
-              <h2><Words>Reserve your <span className="g">jumpstart slot</span></Words></h2>
-              <p className="sub" style={{ margin: '0 auto' }}>Small batches. Once a session fills, applications close.</p>
-            </Reveal>
-            <Reveal as="div" className="wrap rv">
-              <div className="wformwrap">
-                <SignupForm workshopType="jumpstart" />
-                <div className="photo-placeholder ph-form" role="img" aria-label="Photo of a MAZAL team member helping a jumpstart participant fill out the sign-up form">
-                  <span className="ph-file">trading-form.jpg</span>
-                  <span className="ph-desc">Photo beside the form: a participant or mentor mid sign-up, reassuring and approachable</span>
-                </div>
-              </div>
-            </Reveal>
-          </section>
-
-          <WorkshopFAQ />
-
-          <section id="cta-repeat">
-            <Reveal as="div" className="wrap center rv">
-              <h2><Words>Ready for your <span className="g">first trade</span>?</Words></h2>
-              <div className="wherocta">
-                <a className="btn" href="#signup">Claim Your Free Seat</a>
-              </div>
-            </Reveal>
-          </section>
-        </main>
-
-        <RiskDisclaimer />
+          <div className="jp-faq-item">
+            <div className="jp-faq-q">Why the $50 deposit?</div>
+            <div className="jp-faq-a">
+              It&rsquo;s a deposit into your own LBank account, not a fee, and it unlocks Mazal Exclusive
+              perks.
+            </div>
+          </div>
+          <div className="jp-faq-item">
+            <div className="jp-faq-q">Are trade setups guaranteed to win?</div>
+            <div className="jp-faq-a">
+              No. Trading involves real risk, and past results don&rsquo;t guarantee future outcomes.
+            </div>
+          </div>
+        </div>
       </div>
-      <StickyJoinBar label="Claim Seat" />
-    </>
+
+      {/* REPEAT CTA */}
+      <div className="jp-repeat-cta">
+        <a href="#signup" className="jp-btn-white">
+          CLAIM YOUR FREE SEAT →
+        </a>
+      </div>
+
+      {/* DISCLAIMER + FOOTER */}
+      <footer className="jp-footer">
+        <p className="jp-footer-disclaimer">
+          Trading cryptocurrencies and other financial instruments involves substantial risk and may
+          result in the loss of your entire capital. The $50 USD deposit referenced on this page stays in
+          your own LBank account at all times. MAZAL never collects, holds, or has access to your funds.
+          Content shared in this workshop is for educational purposes only and does not constitute
+          financial, investment, or trading advice. Past performance does not guarantee future results.
+          Always do your own research and consult a licensed financial advisor before making investment
+          decisions.
+        </p>
+        <div className="jp-footer-meta">
+          <span className="jp-serif">MAZAL</span>
+          <span aria-hidden="true">·</span>
+          <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">
+            Discord
+          </a>
+          <span aria-hidden="true">·</span>
+          <a href={X_URL} target="_blank" rel="noopener noreferrer">
+            @JoinMazal
+          </a>
+          <span aria-hidden="true">·</span>
+          <span className="jp-footer-meta-muted">Powered by GN Ventures</span>
+        </div>
+      </footer>
+
+      {/* STICKY MOBILE CTA */}
+      <div className="jp-sticky-bar">
+        <div className="jp-sticky-bar-inner">
+          <div className="jp-sticky-copy">
+            <span className="jp-sticky-copy-title">Free beginner workshop</span>
+            <span className="jp-sticky-copy-sub">Small batches</span>
+          </div>
+          <a href="#signup" className="jp-sticky-btn">
+            CLAIM SEAT →
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }
