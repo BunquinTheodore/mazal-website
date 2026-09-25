@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Fraunces, Manrope } from 'next/font/google';
 import SignupForm from '@/components/workshop/SignupForm';
 import './jumpstart.css';
@@ -32,7 +33,14 @@ export default function JumpstartPage() {
     <div className={`jp-page ${fraunces.variable} ${manrope.variable}`}>
       {/* HERO: diagonal-stripe placeholder background, nav + copy on top */}
       <div className="jp-hero">
-        <div className="jp-hero-stripes" aria-hidden="true" />
+        <Image
+          src="/assets/images/asset-007.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="jp-hero-photo"
+        />
         <div className="jp-hero-fade" aria-hidden="true" />
 
         <div className="jp-header">
@@ -214,7 +222,13 @@ export default function JumpstartPage() {
       {/* PHOTO PROOF: diagonal-stripe placeholder strip (no real photos supplied yet) */}
       <div className="jp-section">
         <div className="jp-photo-strip">
-          <div className="jp-photo-stripes" aria-hidden="true" />
+          <Image
+          src="/assets/images/asset-086.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="jp-photo-strip-photo"
+        />
           <div className="jp-photo-fade" aria-hidden="true" />
           <div className="jp-photo-caption">
             <span className="jp-serif jp-photo-caption-title">Real people, real reps</span>

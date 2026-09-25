@@ -125,10 +125,9 @@
   flex-direction: column;
 }
 
-.jp-hero-stripes {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(135deg, #1c1c1c, #1c1c1c 14px, #111111 14px, #111111 28px);
+.jp-hero-photo {
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08) brightness(0.62);
 }
 
 .jp-hero-fade {
@@ -452,10 +451,10 @@ a.jp-btn-white:hover {
   margin: 0 auto;
 }
 
-.jp-photo-stripes {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(135deg, #181818, #181818 12px, #0e0e0e 12px, #0e0e0e 24px);
+.jp-photo-strip-photo {
+  object-fit: cover;
+  object-position: center 30%;
+  filter: grayscale(1) contrast(1.08) brightness(0.6);
 }
 
 .jp-photo-fade {
