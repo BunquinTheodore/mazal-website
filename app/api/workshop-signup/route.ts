@@ -10,6 +10,7 @@ const NOTIFY_EMAIL = 'gnclub.contactus@gmail.com';
 const WORKSHOP_LABELS: Record<string, string> = {
   beginner: 'Beginner workshop (/workshop)',
   live: 'Live workshop (/live)',
+  jumpstart: 'Beginner Trading Jumpstart (/jumpstart)',
 };
 
 /**
@@ -52,7 +53,7 @@ export async function POST(req: NextRequest) {
 
   const errors: Record<string, string> = {};
 
-  if (workshopType !== 'beginner' && workshopType !== 'live') {
+  if (workshopType !== 'beginner' && workshopType !== 'live' && workshopType !== 'jumpstart') {
     errors.workshopType = 'Unknown workshop type.';
   }
   if (!fullName) errors.fullName = 'Full name is required.';

@@ -8,7 +8,7 @@ type Status = 'idle' | 'submitting' | 'success' | 'error';
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
 
-export default function SignupForm({ workshopType }: { workshopType: 'beginner' | 'live' }) {
+export default function SignupForm({ workshopType }: { workshopType: 'beginner' | 'live' | 'jumpstart' }) {
   const [status, setStatus] = useState<Status>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [serverError, setServerError] = useState<string | null>(null);
