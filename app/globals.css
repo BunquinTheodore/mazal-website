@@ -34,15 +34,15 @@ body{background:#000;color:var(--t1);font-family:'Archivo',system-ui,sans-serif;
 a,button,.btn,[role="button"],input,select,textarea{cursor:url('/assets/cursor.svg') 26 2,pointer}
 /* continuously animating liquid background field, same brand palette */
 .bg-field{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.orb{position:absolute;filter:blur(48px);will-change:transform;mix-blend-mode:screen}
+.orb{position:absolute;border-radius:50%;filter:blur(48px);will-change:transform;mix-blend-mode:screen}
 .orb-a{width:62vw;height:62vw;left:-18vw;top:-22vw;background:radial-gradient(circle,rgba(192,240,48,.34) 0%,rgba(192,240,48,0) 68%);animation:orbA 24s ease-in-out infinite}
 .orb-b{width:64vw;height:64vw;right:-20vw;bottom:-26vw;background:radial-gradient(circle,rgba(1,40,169,.55) 0%,rgba(1,40,169,0) 68%);animation:orbB 28s ease-in-out infinite}
 .orb-c{width:42vw;height:42vw;left:32vw;top:22vh;background:radial-gradient(circle,rgba(158,202,29,.22) 0%,rgba(158,202,29,0) 70%);animation:orbC 20s ease-in-out infinite}
 /* mid/low-end mobile GPUs pay disproportionately for large-radius blur; shrink both blur and orb footprint */
 @media(max-width:900px){.orb{filter:blur(30px)}.orb-a,.orb-b{width:48vw;height:48vw}.orb-c{width:32vw;height:32vw}}
-@keyframes orbA{0%,100%{transform:translate(0,0) scale(1);border-radius:50%}33%{transform:translate(6vw,5vw) scale(1.12);border-radius:42% 58% 55% 45%/48% 42% 58% 52%}66%{transform:translate(-3vw,8vw) scale(.94);border-radius:58% 42% 47% 53%/55% 48% 52% 45%}}
-@keyframes orbB{0%,100%{transform:translate(0,0) scale(1);border-radius:50%}40%{transform:translate(-5vw,-6vw) scale(1.1);border-radius:46% 54% 60% 40%/40% 55% 45% 60%}70%{transform:translate(4vw,-3vw) scale(.96);border-radius:60% 40% 45% 55%/52% 48% 52% 48%}}
-@keyframes orbC{0%,100%{transform:translate(0,0) scale(1);border-radius:50%}50%{transform:translate(-4vw,4vw) scale(1.16);border-radius:44% 56% 52% 48%/56% 44% 56% 44%}}
+@keyframes orbA{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(6vw,5vw) scale(1.12)}66%{transform:translate(-3vw,8vw) scale(.94)}}
+@keyframes orbB{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(-5vw,-6vw) scale(1.1)}70%{transform:translate(4vw,-3vw) scale(.96)}}
+@keyframes orbC{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-4vw,4vw) scale(1.16)}}
 @media(prefers-reduced-motion:reduce){.orb{animation:none}}
 body:has(#gnclub-page) .bg-field{display:none}
 main,header,footer{position:relative;z-index:1}
@@ -158,7 +158,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 /* marquee */
 .marquee{margin-top:64px;overflow:hidden;position:relative;contain:layout paint;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .track{display:flex;gap:18px;width:max-content;animation:glide 42s linear infinite}
-.track img{height:218px;border-radius:18px;border:1px solid var(--stroke)}
+.track img{height:218px;width:auto;border-radius:18px;border:1px solid var(--stroke)}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes glide{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.track{animation:none}}

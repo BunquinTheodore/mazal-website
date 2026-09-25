@@ -1,5 +1,18 @@
+import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import Words from '@/components/Words';
+
+const MARQUEE_HEIGHT = 218;
+const MARQUEE_IMAGES = [
+  { src: '/assets/images/asset-008.jpg', width: 388 },
+  { src: '/assets/images/asset-009.jpg', width: 327 },
+  { src: '/assets/images/asset-010.jpg', width: 327 },
+  { src: '/assets/images/asset-011.jpg', width: 327 },
+  { src: '/assets/images/asset-012.jpg', width: 327 },
+  { src: '/assets/images/asset-013.jpg', width: 327 },
+  { src: '/assets/images/asset-014.jpg', width: 669 },
+  { src: '/assets/images/asset-015.jpg', width: 327 },
+];
 
 export default function About() {
   return (
@@ -16,8 +29,17 @@ export default function About() {
       </Reveal>
       <Reveal as="div" className="marquee rv" aria-hidden="true">
         <div className="track">
-          <img src="/assets/images/asset-008.jpg" alt="" /><img src="/assets/images/asset-009.jpg" alt="" /><img src="/assets/images/asset-010.jpg" alt="" /><img src="/assets/images/asset-011.jpg" alt="" /><img src="/assets/images/asset-012.jpg" alt="" /><img src="/assets/images/asset-013.jpg" alt="" /><img src="/assets/images/asset-014.jpg" alt="" /><img src="/assets/images/asset-015.jpg" alt="" />
-          <img src="/assets/images/asset-008.jpg" alt="" /><img src="/assets/images/asset-009.jpg" alt="" /><img src="/assets/images/asset-010.jpg" alt="" /><img src="/assets/images/asset-011.jpg" alt="" /><img src="/assets/images/asset-012.jpg" alt="" /><img src="/assets/images/asset-013.jpg" alt="" /><img src="/assets/images/asset-014.jpg" alt="" /><img src="/assets/images/asset-015.jpg" alt="" />
+          {[0, 1].map((copy) =>
+            MARQUEE_IMAGES.map((img, i) => (
+              <Image
+                key={`${copy}-${i}`}
+                src={img.src}
+                alt=""
+                width={img.width}
+                height={MARQUEE_HEIGHT}
+              />
+            ))
+          )}
         </div>
       </Reveal>
     </section>
