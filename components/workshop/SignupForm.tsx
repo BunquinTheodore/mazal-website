@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import Reveal from '@/components/Reveal';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
