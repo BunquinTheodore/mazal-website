@@ -208,7 +208,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 .pos-l{object-position:22% 38%}.pos-r{object-position:72% 40%}.pos-t{object-position:center 22%}.pos-c{object-position:center 45%}
 .bbody{padding:16px}
 .ana{margin-top:64px;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;background:linear-gradient(160deg,rgba(192,240,48,.08),rgba(14,18,32,.56));backdrop-filter:blur(var(--blur-lg)) saturate(var(--sat-lg));-webkit-backdrop-filter:blur(var(--blur-lg)) saturate(var(--sat-lg));border:1px solid var(--gstroke);border-radius:26px;padding:40px;box-shadow:0 1px 0 var(--glass-hi),0 24px 48px rgba(0,0,0,.3)}
-.ana img{border-radius:18px;border:1px solid var(--stroke);width:100%}
+.ana img{border-radius:18px;border:1px solid var(--stroke);width:100%;height:auto;aspect-ratio:1/1}
 @media(max-width:900px){.ana{grid-template-columns:1fr}}
 .bcard:hover{border-color:var(--gstroke);transform:translateY(-5px);box-shadow:0 1px 0 var(--glass-hi),0 28px 52px rgba(0,0,0,.4),0 0 40px rgba(192,240,48,.1)}
 .bbody svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.7;margin-bottom:10px}
