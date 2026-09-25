@@ -16,7 +16,7 @@
    layouts stack many glass cards (.bcard rows, .card grids) in view at once */
 @media(max-width:600px){:root{--blur-lg:16px;--blur-sm:10px}}
 *{margin:0;padding:0;box-sizing:border-box;hyphens:none;-webkit-hyphens:none;-ms-hyphens:none}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
 /* Intro splash: pure-CSS, fires on real page load/refresh only (this node
    persists across client-side route transitions in the App Router, so it
    never remounts, and therefore never replays, on internal Link clicks). */
