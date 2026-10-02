@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
+import { Josefin_Sans, Manrope, Poppins } from 'next/font/google';
 import './globals.css';
+import MarketBackground from '@/components/background/MarketBackground';
 import { ClickSoundProvider } from '@/components/ClickSoundProvider';
+
+const josefin = Josefin_Sans({ subsets: ['latin'], weight: '300', display: 'swap', variable: '--font-josefin' });
+const manrope = Manrope({ subsets: ['latin'], display: 'swap', variable: '--font-manrope' });
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600'], display: 'swap', preload: false, variable: '--font-poppins' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.joinmazal.org'),
@@ -25,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${josefin.variable} ${manrope.variable} ${poppins.variable}`}>
       <body>
         <ClickSoundProvider />
         <div className="gn-splash" aria-hidden="true">
@@ -36,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <span className="orb orb-b" />
           <span className="orb orb-c" />
         </div>
+        <MarketBackground />
         {children}
       </body>
     </html>

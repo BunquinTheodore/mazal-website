@@ -15,12 +15,14 @@
     "next": "14.2.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "resend": "^6.28.1"
+    "resend": "^6.28.1",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.186.0",
     "typescript": "^5.5.0"
   }
 }

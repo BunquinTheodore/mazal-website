@@ -11,7 +11,7 @@ This repo is a Next.js 14 (App Router, TypeScript) marketing site serving two re
 - **Key libraries**: none beyond `next`/`react`/`react-dom` — no UI kit, no animation library (GSAP/Framer), no form library, no analytics SDK visible in the code.
 - **Backend/CMS**: no CMS — all copy is hardcoded in `.tsx` files. One real API route, `app/api/workshop-signup/route.ts`, validates the sign-up form server-side but is a **placeholder**: it only `console.log`s the submission and returns `{ ok: true }`; it does not persist form data or the uploaded proof-of-deposit file anywhere (Google Sheet / Formspree / Supabase are still an open decision — see `PLAN.md`).
 - **Hosting**: deployed on Vercel — project `mazal-website`, org `theodore-von-joshua-bunquins-projects` (`.vercel/project.json`). `.env.local` currently holds only a Vercel OIDC token, no app secrets/env vars.
-- **Fonts**: self-hosted `.woff2` files in `public/assets/fonts/` (`asset-001.woff2`…`asset-005.woff2`).
+- **Fonts**: `next/font` families: Manrope (body), Josefin Sans Light caps (titles), Poppins (UI). The original owner-supplied `public/assets/fonts/asset-001.woff2`…`asset-005.woff2` stay in the repo, unreferenced.
 
 ## 3. Structure
 

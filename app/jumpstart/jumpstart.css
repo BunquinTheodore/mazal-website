@@ -23,7 +23,7 @@
   flex-direction: column;
   position: relative;
   padding-bottom: 96px;
-  font-family: var(--jp-font-sans), 'Manrope', sans-serif;
+  font-family: var(--f-body);
 }
 
 .jp-page *,
@@ -42,18 +42,20 @@
 }
 
 .jp-serif {
-  font-family: var(--jp-font-serif), 'Fraunces', serif;
+  font-family: var(--f-display);
+  font-weight: 300;
 }
 
+
 .jp-accent {
-  font-family: var(--jp-font-serif), 'Fraunces', serif;
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--f-display);
+  font-style: normal;
+  font-weight: 300;
 }
 
 .jp-page button {
   cursor: pointer;
-  font-family: var(--jp-font-sans), 'Manrope', sans-serif;
+  font-family: var(--f-ui);
 }
 
 .jp-container {
@@ -607,7 +609,7 @@ a.jp-sticky-btn:active,
   margin-bottom: 0;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  font-family: var(--jp-font-sans), 'Manrope', sans-serif;
+  font-family: var(--f-body);
 }
 
 .jp-form-wrap label .req {
@@ -616,7 +618,7 @@ a.jp-sticky-btn:active,
 
 .jp-form-wrap input,
 .jp-form-wrap textarea {
-  font-family: var(--jp-font-sans), 'Manrope', sans-serif;
+  font-family: var(--f-body);
   font-size: 16px;
   color: var(--jp-ink);
   background: var(--jp-card);
@@ -707,9 +709,9 @@ a.jp-sticky-btn:active,
 .jp-form-wrap .wsuccess h3 {
   margin: 0;
   font-size: 20px;
-  font-weight: 500;
   color: var(--jp-white);
-  font-family: var(--jp-font-serif), 'Fraunces', serif;
+  font-family: var(--f-body);
+  font-weight: 600;
 }
 
 .jp-form-wrap .wsuccess p {
@@ -882,4 +884,22 @@ a.jp-sticky-btn {
     transform: none;
     transition: none;
   }
+}
+
+/* Type system: Josefin Sans 300 all-caps titles. Placed last so it wins over the per-block weights above. */
+.jp-page .jp-h1,
+.jp-page .jp-h2,
+.jp-page .jp-signup-title {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  overflow-wrap: break-word;
+}
+
+.jp-page .jp-h1-accent {
+  font-weight: 300;
+}
+
+.jp-page .jp-serif {
+  font-weight: 300;
 }

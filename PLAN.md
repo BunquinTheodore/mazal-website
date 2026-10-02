@@ -208,3 +208,51 @@ are unchanged). Verified via Chrome (chrome-devtools-mcp) and
   accordingly (see #4 above).
 - The 18 photo-slot TODOs and other open items listed earlier in this file
   are unaffected by the above and still stand.
+
+## 2026-10-02: type system + market-lines background
+
+**Type system.** Josefin Sans 300 (all caps via CSS `text-transform`) for every h1/h2, splash title and the gn-club "coming" label. Manrope (variable) for body and h3. Poppins 400/500/600 for UI (buttons, nav, labels, inputs, badges, FAQ buttons, stat numbers). Loaded with `next/font/google` in `app/layout.tsx` (CSS variables on `<html>`), tokens `--f-display`, `--f-body`, `--f-ui` in `:root` of `globals.css`. Old Archivo/SpaceG `@font-face` removed; /jumpstart no longer loads Fraunces/Manrope itself. Opt-out class: `.heading-plain`. h3 stays uppercase as before (pre-existing house style). Monospace blocks in gn-club and the OG image route (own fonts) untouched.
+
+**Background.** `components/background/`: `MarketBackground.tsx` (mounted once in the root layout), `capabilities.ts`, `marketScene.ts`, `marketShaders.ts`, `pointerTrail.ts`. CSS poster `.mkt-bg` (z-index -1, no JS needed). three.js is a separate chunk fetched via `import()` only after the first real user input (see Round 2 below). Skipped on saveData, deviceMemory <= 2, hardwareConcurrency <= 2, no WebGL; reduced motion draws one still frame. To disable: remove `<MarketBackground />` from `app/layout.tsx`.
+
+**Results.** Build passes, `/` First Load JS unchanged at 102 kB. No console errors; no horizontal overflow at 360px on /, /jumpstart, /workshop, /join, /gn-club, /live. Lighthouse not run here.
+
+## 2026-10-02 Round 1 fixes (background and type)
+- Background start was made input-driven with a 15 s quiet fallback. SUPERSEDED in Round 2: the timed fallback is gone. Import, renderer creation and first render are still separated by yields (`yieldToMain`).
+- Still mode (reduced motion) now repaints after resize and context restore. Resize is rAF-throttled and ignores height-only changes under 160 px (mobile URL bar).
+- `.brand` and `.fbrand` wordmarks use Josefin 300 caps. h3 stays Manrope per spec. Unreferenced old woff2 files removed. OG image route still loads its own Google fonts (Archivo, Space Grotesk), untouched.
+- Lint: this round added eslint, eslint-config-next and `.eslintrc.json`. REVERTED in Round 2 as scope creep (see below). No test script exists.
+- Disable the effect: remove `<MarketBackground />` from `app/layout.tsx`.
+
+## 2026-10-03 Round 2: first-interaction background, effect quality, PageSpeed
+
+**Hygiene.** Removed eslint, eslint-config-next and `.eslintrc.json`. `package-lock.json` restored from HEAD and `npm install three@^0.186.1 @types/three@^0.186.0` re-run, so the lockfile diff is only the added packages (about 61 lines instead of about 4,800). `three` is a dependency, `@types/three` a devDependency. The original repo has a `lint` script but no ESLint config or dependency, so it never ran; type check is `npx tsc --noEmit`. Kept from round 1 (all part of the type system or background): the Josefin/Manrope/Poppins CSS tokens, jumpstart font swap, the five unreferenced `asset-00x.woff2` files (deleted in this round, restored byte-identical from HEAD in the next fix pass). `response.html` is an owner file and was not touched.
+
+**Trigger rule.** The three.js chunk is requested only after the window `load` event AND the first real input (pointermove, pointerdown, touchstart, scroll, wheel or keydown), see `onFirstInput` in `components/background/capabilities.ts`. There is no timer fallback, so a headless run (Lighthouse never moves the cursor or scrolls) never fetches it; verified in the audit network lists (no three chunk in any run). Without input, or with JS off, the static `.mkt-bg` CSS poster stays. After the trigger the canvas fades in over 600 ms (`.mkt-bg canvas` transition). The position of the triggering event is passed through so the glow is already under the cursor or finger. Kept guards: Save-Data, deviceMemory <= 2, hardwareConcurrency <= 2, no WebGL, reduced motion (one still frame), pause when hidden or off-screen, dispose on unmount, webglcontextlost/restored, SSR safe (component renders an empty div), mounted once in the root layout so route changes do not restart it. Touch: allowed on coarse pointers with 6 lines x 72 segments, 8 nodes, pixel ratio 1, 40 fps cap.
+
+**Effect.** Base line alpha raised (0.22 to 0.34 desktop, 0.30 touch; node alpha up). Cursor reaction: slot 0 of the pointer trail is now a "hover head" that stays lit while a mouse is over the page or a finger is down (fades out about 0.9 s after touchend, immediately on mouse leave), plus the fading motion trail. Wider falloff, stronger lift, bigger glow nodes near the pointer. Idle: slow sideways chart scroll plus a gentle sine undulation; desktop idles at 30 fps and goes uncapped only while the pointer is active. Site is dark only, so no light theme check was needed.
+
+**PageSpeed work (no visual change).** Method: production build, `next start -p 3001`, Lighthouse 12 mobile and desktop with system Chrome, 3 runs each, median. Caveat: other agents were building and running Lighthouse on this machine at the same time (CPU often 60 to 100 percent), so run-to-run noise was large; the first baseline was taken under the worst load. Localhost Lighthouse is a proxy; live PSI depends on hosting and network.
+- Cause found by tracing (CPU time, not wall time): about 85 percent of load-time rendering CPU was always-on animations, not JS. Every glass card has an infinite `liquidSheen` `background-position` animation on its `::before`, plus 4 marquees and the hero shines. Offscreen sections were animating and being laid out from the first frame (12k style invalidations in a 9 s run).
+- (REMOVED in QA round 1, it caused layout shift) Fix 1: `content-visibility:auto` with measured `contain-intrinsic-size` (phone, tablet, desktop) on the below-the-fold sections of `/` and `/workshop` (end of `globals.css`; the CTA section got the class `cv-cta`). Full-page screenshots with and without it have identical page height and look the same.
+- Fix 2: the two hero button shine sweeps (`heroShine`) now move an oversized pseudo with `transform` (compositor) instead of animating `background-position`; same gradient, same keyframe positions (150% to -60% on a 220% gradient equals translateX -81.82% to 32.73% of a 220% wide layer).
+- Fix 3: the splash fade no longer animates `pointer-events` inside the same animation (that made the whole fade non-composited); `pointer-events:none` is a separate one-tick animation at the same time (1.6 s).
+- Fix 4: fonts: Poppins now `preload:false` so only 2 font files (Josefin 300, Manrope) are preloaded instead of 5.
+- Fix 5: images: AVIF then WebP in `next.config.mjs` (hero 65 KB to 45 KB), hero `sizes` now `calc(100vw - 48px)` on phones (640w instead of 750w), PoweredChip `sizes="40px"` (was fetching the 3840w variant for a 39 px logo), `app/icon.png` 398 KB to 14 KB (96 px), `cursor.svg` 26 KB to 9 KB (embedded PNG 128 px to 64 px, drawn at 32 px).
+- Not changed: `components/Partners.tsx` keeps plain `<img>`: the logos are 3 to 11 KB lazy PNGs in fixed-size chips, so next/image would not help and no layout shift occurs.
+- Nav wordmark: code and docs now agree, Josefin Sans 300 caps (the user's title rule). h3 stays Manrope.
+
+**Measured (Lighthouse, localhost, median of 3).** Before (round 1 state, contended machine): home mobile 51 (LCP 4.1 s, TBT 2269 ms), workshop mobile 80 (LCP 4.3 s, TBT 240 ms), desktop 94 and 96. After: see the table below.
+
+| Page / form factor | Performance (3 runs) | Median | LCP | TBT | CLS |
+|---|---|---|---|---|---|
+| `/` mobile | 91 / 94 / 94 | 94 | 2.93 s | 18 ms | 0.001 |
+| `/` desktop | 99 / 100 / 100 | 100 | 0.68 s | 0 ms | 0.002 |
+| `/workshop` mobile | 97 / 97 / 94 | 97 | 2.45 s | 10 ms | 0.017 |
+| `/workshop` desktop | 100 / 100 / 100 | 100 | 0.66 s | 0 ms | 0.002 |
+
+Earlier mid-round batches on the same build lineage ranged 86 to 91 for `/` mobile when the machine was busy, so treat 90 to 94 as the honest range for `/` mobile on this hardware. Lighthouse reports the three.js chunk in none of the runs (largest request is the 54 KB Next framework chunk).
+
+**Open items.** Home mobile sits right at the 90 line: the simulated LCP (about 3.3 s) is mostly all requests that start before Chrome's observed LCP in the Lighthouse run (fonts, lazy marquee photos, RSC prefetches, JS framework chunks); the hero image itself is 45 KB and discovered in the HTML with fetchpriority high. Remaining levers that would need a design or product decision: shorter or later splash overlay (1 s hold + 0.6 s fade), fewer marquee photos near the fold, dropping Next link prefetch on the nav. `sharp` is not installed, so Next uses its slower WASM image optimizer locally; production hosts (Vercel) use sharp.
+
+**Fix pass (2026-10-03).** Background frame cap now really applies: the mouse counts as active only 1.5 s after its last move (`PointerTrail` decay), active draw is capped at 45 fps (30 fps on touch), idle at 12 fps, and the loop pauses after 20 s without input and resumes on pointermove, touchstart, scroll, wheel or keydown. Restored `public/assets/fonts/asset-001..005.woff2` from HEAD via `git show` (hash-object matches HEAD blobs); they stay unreferenced.

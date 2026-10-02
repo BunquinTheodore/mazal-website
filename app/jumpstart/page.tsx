@@ -1,24 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Fraunces, Manrope } from 'next/font/google';
 import SignupForm from '@/components/workshop/SignupForm';
 import Reveal from '@/components/Reveal';
 import './jumpstart.css';
-
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  weight: ['400', '500', '600'],
-  variable: '--jp-font-serif',
-  display: 'swap',
-});
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--jp-font-sans',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'Free Beginner Trading Jumpstart | MAZAL',
@@ -31,7 +15,7 @@ const X_URL = 'https://x.com/joinmazal';
 
 export default function JumpstartPage() {
   return (
-    <div className={`jp-page ${fraunces.variable} ${manrope.variable}`}>
+    <div className="jp-page">
       {/* HERO: diagonal-stripe placeholder background, nav + copy on top */}
       <div className="jp-hero">
         <Image

@@ -3,7 +3,7 @@ import Words from '@/components/Words';
 
 export default function CTA() {
   return (
-    <section>
+    <section className="cv-cta">
       <Reveal as="div" className="wrap rv">
         <div className="cta">
           <span className="eyebrow">Start today</span>
