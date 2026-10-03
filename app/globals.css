@@ -61,6 +61,11 @@ h2{font-size:clamp(30px,4.6vw,52px);margin:18px 0 14px}
 .sub{color:var(--t2);max-width:620px;font-size:17px}
 section{padding:96px 0}
 .center{text-align:center}.center .sub{margin:0 auto}
+/* One-line subtext (Event Highlights). The 620px cap on .sub is for body-length
+   paragraphs; this sentence is a single line on tablets and desktops, scaled so it
+   always fits (about 50em wide), and wraps normally on phones where one line would
+   be too small to read. */
+@media (min-width:700px){.sub.sub-one-line{max-width:none;white-space:nowrap;font-size:min(17px,calc((100vw - 48px) / 50))}}
 .btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(160deg,rgba(210,255,90,.62),rgba(158,202,29,.5));backdrop-filter:blur(var(--blur-sm)) saturate(var(--sat-lg));-webkit-backdrop-filter:blur(var(--blur-sm)) saturate(var(--sat-lg));color:#05080a;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:15px;border-radius:999px;padding:17px 34px;border:1px solid rgba(233,255,170,.55);box-shadow:0 1px 0 var(--glass-hi),0 0 34px rgba(192,240,48,.3),0 14px 30px rgba(0,0,0,.25);transition:transform .22s cubic-bezier(.2,.8,.2,1), box-shadow .22s ease, background .22s ease, border-color .22s ease}
 .btn:hover{transform:translateY(-2px) scale(1.035);background:linear-gradient(160deg,rgba(220,255,110,.72),rgba(158,202,29,.6));border-color:rgba(240,255,200,.7);box-shadow:0 1px 0 var(--glass-hi),0 0 50px rgba(192,240,48,.48),0 18px 36px rgba(0,0,0,.3)}
 .btn:active{transform:translateY(0) scale(.98)}
@@ -211,6 +216,11 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 .ana{margin-top:64px;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;background:linear-gradient(160deg,rgba(192,240,48,.08),rgba(14,18,32,.56));backdrop-filter:blur(var(--blur-lg)) saturate(var(--sat-lg));-webkit-backdrop-filter:blur(var(--blur-lg)) saturate(var(--sat-lg));border:1px solid var(--gstroke);border-radius:26px;padding:40px;box-shadow:0 1px 0 var(--glass-hi),0 24px 48px rgba(0,0,0,.3)}
 .ana img{border-radius:18px;border:1px solid var(--stroke);width:100%;height:auto;aspect-ratio:1/1}
 @media(max-width:900px){.ana{grid-template-columns:1fr}}
+/* Sample-analysis title on one line. 24px is the base; where container queries exist and
+   the card sits beside the image (600px and up) the title is sized to its column (about
+   21em of uppercase) so it always fits on one line. Phones keep 24px and wrap. */
+.ana-title{font-size:24px}
+@supports (container-type:inline-size){@media(min-width:600px){.ana>div:first-child{container-type:inline-size}.ana-title{font-size:min(24px,4.4cqw);white-space:nowrap}}}
 .bcard:hover{border-color:var(--gstroke);transform:translateY(-5px);box-shadow:0 1px 0 var(--glass-hi),0 28px 52px rgba(0,0,0,.4),0 0 40px rgba(192,240,48,.1)}
 .bbody svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.7;margin-bottom:10px}
 .bbody h3{font-size:15px;letter-spacing:.05em;margin-bottom:6px}
@@ -328,7 +338,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:
 .q.open .a{max-height:260px;padding-bottom:22px}
 /* cta */
 .cta{background:linear-gradient(160deg,rgba(192,240,48,.12),rgba(1,40,169,.18));backdrop-filter:blur(var(--blur-lg)) saturate(var(--sat-lg));-webkit-backdrop-filter:blur(var(--blur-lg)) saturate(var(--sat-lg));border:1px solid var(--gstroke);border-radius:30px;padding:78px 30px;text-align:center;box-shadow:0 1px 0 var(--glass-hi),0 30px 60px rgba(0,0,0,.32)}
-.cta h2{font-size:clamp(30px,4.6vw,54px)}
+.cta h2{font-size:clamp(24px,4.6vw,54px)}
+@media(max-width:520px){.cta h2{font-size:max(17px,5.1vw)}}
 .ctafree{margin:26px auto 0;max-width:480px;text-align:center}
 .ctafree span{color:var(--t2);font-size:14px}
 .ctabtns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}

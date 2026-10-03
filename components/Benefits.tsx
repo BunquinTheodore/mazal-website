@@ -150,7 +150,7 @@ export default function Benefits() {
         <div className="ana">
           <div>
             <span className="eyebrow">Sample analysis</span>
-            <h3 style={{ fontSize: '24px', margin: '16px 0 10px', letterSpacing: '.02em' }}>This is what analysis looks like inside</h3>
+            <h3 className="ana-title" style={{ margin: '16px 0 10px', letterSpacing: '.02em' }}>This is what analysis looks like inside</h3>
             <p style={{ color: 'var(--t2)', fontSize: '15px', maxWidth: '400px' }}>MAZAL research notes break a move down in plain language: the catalyst, the price context, and the numbers that matter. Posted for members, free.</p>
           </div>
           <Image src="/assets/images/asset-020.jpg" alt="Sample MAZAL research note" width={900} height={900} sizes="(max-width: 900px) 100vw, 55vw" />
