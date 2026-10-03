@@ -17,7 +17,7 @@ export default function Performance() {
       </Reveal>
       <Reveal as="div" className="wrap rv">
         <div className="stats">
-          <div className="stat"><b><Counter to={200} prefix="$" suffix="M+" /></b><span>Community trading volume in one month</span></div>
+          <div className="stat"><b><Counter to={400} prefix="$" suffix="M+" /></b><span>Community trading volume in one month</span></div>
           <div className="stat"><b><Counter to={0} prefix="₱" /></b><span>Membership fee: free forever</span></div>
           <div className="stat"><b><Counter to={8} suffix=" Part" /></b><span>Free beginner trading workshop</span></div>
           <div className="stat"><b>Weekly</b><span>Live sessions &amp; community events</span></div>
@@ -25,7 +25,7 @@ export default function Performance() {
         <div className="perf-card">
           <div className="perf-text">
             <h3>Success stories</h3>
-            <p>Our lead trader grew an account from <b style={{ color: 'var(--green)' }}>$10K to $1M</b>, and the journey is documented inside the community: the setups, the drawdowns, and the risk management that made it possible.</p>
+            <p>Our lead trader grew an account from <b style={{ color: 'var(--green)' }}>Php 10,000 to Php 1M</b>, and the journey is documented inside the community: the setups, the drawdowns, and the risk management that made it possible.</p>
             <p style={{ marginTop: '12px' }}>Trade recaps and win breakdowns are shared openly in the Discord: what worked, what didn&apos;t, and why. Recent highlight: a 4 to 0 week opener on gold.</p>
           </div>
           <div className="perf-media-row">

@@ -302,6 +302,11 @@ a.jp-sticky-btn:active,
   color: var(--jp-white);
 }
 
+.jp-proof-value-long {
+  font-size: 15px;
+  line-height: 1.25;
+}
+
 .jp-proof-label {
   font-size: 12px;
   color: var(--jp-ink-2);

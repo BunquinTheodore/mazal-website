@@ -81,11 +81,11 @@ export default function JumpstartPage() {
       {/* COMPACT PROOF ROW */}
       <Reveal as="div" className="jp-proof jp-rv">
         <div className="jp-proof-item">
-          <div className="jp-serif jp-proof-value">$200M+</div>
+          <div className="jp-serif jp-proof-value">$400M+</div>
           <div className="jp-proof-label">monthly volume</div>
         </div>
         <div className="jp-proof-item">
-          <div className="jp-serif jp-proof-value">$10K→$1M</div>
+          <div className="jp-serif jp-proof-value jp-proof-value-long">Php 10K→<br />Php 1M</div>
           <div className="jp-proof-label">trader&rsquo;s growth</div>
         </div>
         <div className="jp-proof-item">
@@ -236,7 +236,7 @@ export default function JumpstartPage() {
               </svg>
               <span className="jp-signup-sub">Small batches. Once a session fills, applications close.</span>
             </div>
-            <p className="jp-signup-proof">$10K→$1M trader&rsquo;s growth, same community, documented.</p>
+            <p className="jp-signup-proof">Php 10,000 to Php 1M trader&rsquo;s growth, same community, documented.</p>
           </div>
           <div className="jp-form-wrap">
             <SignupForm workshopType="jumpstart" />

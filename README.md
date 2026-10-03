@@ -38,7 +38,7 @@ This repo is a Next.js 14 (App Router, TypeScript) marketing site serving two re
 
 ## 4. What exists
 
-- Full MAZAL homepage: hero, "About" cards + logo marquee, two autoplay event aftermovie videos, a 9-card benefits grid, a stats/performance section with an animated counter (`$200M+` volume, `8-part` workshop, etc.) and a "success stories" block, a 24-logo auto-scrolling partner marquee, 3 rotating member testimonials, a 4-item FAQ accordion, and a closing CTA section.
+- Full MAZAL homepage: hero, "About" cards + logo marquee, two autoplay event aftermovie videos, a 9-card benefits grid, a stats/performance section with an animated counter (`$400M+` volume, `8-part` workshop, etc.) and a "success stories" block, a 24-logo auto-scrolling partner marquee, 3 rotating member testimonials, a 4-item FAQ accordion, and a closing CTA section.
 - Full GN Club page: image-collage hero with two anchor CTAs, an auto-scrolling achievement ticker, an 11-entry portfolio of past events/initiatives (each with copy + a 2–4 image gallery; the 11th, "Tech Run 2026," is explicitly marked "Coming Soon" with no real content yet), a 4-card "why partner with us" grid, and a "Book a Meeting" partner CTA section.
 - Two working conversion landing pages (`/workshop`, `/live`) with a shared visual language, each including a client-validated sign-up form (`SignupForm.tsx`) that checks required fields, an LBank-UID numeric pattern, and file type/size (JPG/PNG, ≤10MB) before submit, plus a hidden honeypot field for spam.
 - A sticky mobile-only "Join Now" bar on both landing pages, and a scroll-reveal system (`Reveal.tsx`) applied consistently across every section on every page.
