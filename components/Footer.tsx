@@ -14,14 +14,14 @@ export default function Footer() {
           </div>
           <div>
             <h4>Community</h4>
-            <a href="https://discord.gg/6Vm2jxMxV" target="_blank" rel="noopener">Discord</a>
+            <a href="https://discord.gg/joinmazal" target="_blank" rel="noopener">Discord</a>
             <a href="https://facebook.com/joinmazal" target="_blank" rel="noopener">Facebook: @joinmazal</a>
             <a href="https://instagram.com/joinmazal" target="_blank" rel="noopener">Instagram: @joinmazal</a>
             <a href="https://x.com/joinmazal" target="_blank" rel="noopener">X: @joinmazal</a>
           </div>
           <div>
             <h4>Contact</h4>
-            <a href="https://discord.gg/6Vm2jxMxV" target="_blank" rel="noopener">Message us on Discord</a>
+            <a href="https://discord.gg/joinmazal" target="_blank" rel="noopener">Message us on Discord</a>
             <a href="https://facebook.com/joinmazal" target="_blank" rel="noopener">DM on Facebook</a>
           </div>
           <div>
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
         <div className="legal">
           <span>© 2026 Mazal Community. All rights reserved.</span>
-          <span>discord.gg/6Vm2jxMxV · @joinmazal</span>
+          <span>discord.gg/joinmazal · @joinmazal</span>
         </div>
       </div>
     </footer>

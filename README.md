@@ -57,7 +57,7 @@ This repo is a Next.js 14 (App Router, TypeScript) marketing site serving two re
 - **Two broken/placeholder CTA links (`href="#"`, go nowhere):**
   - `components/PoweredChip.tsx` (line 3) — the "Powered by GN Ventures" chip shown on every MAZAL homepage view links to `#` instead of the GN Ventures site.
   - `components/gn/GNPartnerCTA.tsx` (line 10) — the GN Club page's primary "Book a Meeting ↗" CTA (`id="gnBookBtn"`) links to `#`; no Calendly/booking link has been wired in (also called out as a known TODO in the pre-existing README carried into this rewrite).
-  - `components/workshop/SignupForm.tsx` (line 82) — the post-submit success screen's "Join our Discord / FB group" link is `href="#"` with an inline `{/* TODO: link */}` comment, despite a working Discord invite (`discord.gg/6Vm2jxMxV`) being used everywhere else on the site.
+  - `components/workshop/SignupForm.tsx` (line 82) — the post-submit success screen's "Join our Discord / FB group" link is `href="#"` with an inline `{/* TODO: link */}` comment, despite a working Discord invite (`discord.gg/joinmazal`) being used everywhere else on the site.
 - **Footer legal links are mislabeled placeholders.** `components/Footer.tsx` (lines 27–29): "Risk Disclaimer," "Privacy Policy," and "Terms of Service" all point to the same `#risk` anchor, which contains only the risk-disclaimer text — there is no actual Privacy Policy or Terms of Service content anywhere in the site.
 - **No mobile navigation menu.** `app/globals.css` line 59 (`@media(max-width:900px){.navlinks{display:none}}`) hides the entire desktop nav link row (About/Highlights/Benefits/Events/Performance/Partners/FAQ) below 900px with no hamburger menu or other mobile replacement — on phones, `Nav.tsx` only exposes the logo and the "Join the community" button; in-page anchor navigation is effectively unreachable from the nav bar on mobile.
 - **GN Club portfolio item 11/11 ("Tech Run 2026") is explicitly "Coming Soon"** (`components/gn/GNPortfolio.tsx` lines 166–171) with no real photos/copy yet — an implied future event with no content behind it.
@@ -104,13 +104,13 @@ Every call-to-action button/link on the site, by page. A CTA reused by a shared 
 
 | Label | Section | Destination |
 |---|---|---|
-| "Join the Discord" | CTA section (`components/CTA.tsx`) | `https://discord.gg/6Vm2jxMxV` (external, new tab) |
+| "Join the Discord" | CTA section (`components/CTA.tsx`) | `https://discord.gg/joinmazal` (external, new tab) |
 | "Start learning today" | CTA section (`components/CTA.tsx`) | `#benefits` (in-page anchor) |
-| "Discord" | Footer (`components/Footer.tsx`) | `https://discord.gg/6Vm2jxMxV` (external, new tab) |
+| "Discord" | Footer (`components/Footer.tsx`) | `https://discord.gg/joinmazal` (external, new tab) |
 | "Facebook: @joinmazal" | Footer | `https://facebook.com/joinmazal` (external, new tab) |
 | "Instagram: @joinmazal" | Footer | `https://instagram.com/joinmazal` (external, new tab) |
 | "X: @joinmazal" | Footer | `https://x.com/joinmazal` (external, new tab) |
-| "Message us on Discord" | Footer (Contact column) | `https://discord.gg/6Vm2jxMxV` (external, new tab) |
+| "Message us on Discord" | Footer (Contact column) | `https://discord.gg/joinmazal` (external, new tab) |
 | "DM on Facebook" | Footer (Contact column) | `https://facebook.com/joinmazal` (external, new tab) |
 | "Risk Disclaimer" | Footer (Legal column) | `#risk` (in-page anchor) |
 | "Privacy Policy" | Footer (Legal column) | `#risk` — **mislabeled**, points to risk disclaimer, no real privacy policy |

@@ -41,7 +41,7 @@ const FREE_PERKS = [
 
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
-const DISCORD_URL = 'https://discord.gg/6Vm2jxMxV';
+const DISCORD_URL = 'https://discord.gg/joinmazal';
 const REFERRAL_CODE = 'LBANKSEA';
 const MIN_SEL = 1;
 const MAX_SEL = 3;

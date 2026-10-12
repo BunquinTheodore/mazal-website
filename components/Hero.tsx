@@ -12,7 +12,7 @@ export default function Hero() {
           <p className="sub">MAZAL is a free trading community for traders, creators, students, and brands, learning the markets together through workshops, live sessions, and real community events.</p>
           <div className="herobtns">
             <Link className="btn" href="/join">Join Mazal</Link>
-            <a className="btn dark" href="https://discord.gg/6Vm2jxMxV" target="_blank" rel="noopener">Discord Channel</a>
+            <a className="btn dark" href="https://discord.gg/joinmazal" target="_blank" rel="noopener">Discord Channel</a>
           </div>
         </Reveal>
         {/* Not wrapped in Reveal: this is the LCP element, so it must paint
