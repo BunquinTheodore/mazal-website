@@ -14,14 +14,14 @@ export default function Footer() {
           </div>
           <div>
             <h4>Community</h4>
-            <a href="https://discord.gg/joinmazal" target="_blank" rel="noopener">Discord</a>
+            <a href="https://discord.com/invite/joinmazal" target="_blank" rel="noopener">Discord</a>
             <a href="https://facebook.com/joinmazal" target="_blank" rel="noopener">Facebook: @joinmazal</a>
             <a href="https://instagram.com/joinmazal" target="_blank" rel="noopener">Instagram: @joinmazal</a>
             <a href="https://x.com/joinmazal" target="_blank" rel="noopener">X: @joinmazal</a>
           </div>
           <div>
             <h4>Contact</h4>
-            <a href="https://discord.gg/joinmazal" target="_blank" rel="noopener">Message us on Discord</a>
+            <a href="https://discord.com/invite/joinmazal" target="_blank" rel="noopener">Message us on Discord</a>
             <a href="https://facebook.com/joinmazal" target="_blank" rel="noopener">DM on Facebook</a>
           </div>
           <div>

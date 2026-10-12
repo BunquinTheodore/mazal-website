@@ -104,13 +104,13 @@ Every call-to-action button/link on the site, by page. A CTA reused by a shared 
 
 | Label | Section | Destination |
 |---|---|---|
-| "Join the Discord" | CTA section (`components/CTA.tsx`) | `https://discord.gg/joinmazal` (external, new tab) |
+| "Join the Discord" | CTA section (`components/CTA.tsx`) | `https://discord.com/invite/joinmazal` (external, new tab) |
 | "Start learning today" | CTA section (`components/CTA.tsx`) | `#benefits` (in-page anchor) |
-| "Discord" | Footer (`components/Footer.tsx`) | `https://discord.gg/joinmazal` (external, new tab) |
+| "Discord" | Footer (`components/Footer.tsx`) | `https://discord.com/invite/joinmazal` (external, new tab) |
 | "Facebook: @joinmazal" | Footer | `https://facebook.com/joinmazal` (external, new tab) |
 | "Instagram: @joinmazal" | Footer | `https://instagram.com/joinmazal` (external, new tab) |
 | "X: @joinmazal" | Footer | `https://x.com/joinmazal` (external, new tab) |
-| "Message us on Discord" | Footer (Contact column) | `https://discord.gg/joinmazal` (external, new tab) |
+| "Message us on Discord" | Footer (Contact column) | `https://discord.com/invite/joinmazal` (external, new tab) |
 | "DM on Facebook" | Footer (Contact column) | `https://facebook.com/joinmazal` (external, new tab) |
 | "Risk Disclaimer" | Footer (Legal column) | `#risk` (in-page anchor) |
 | "Privacy Policy" | Footer (Legal column) | `#risk` — **mislabeled**, points to risk disclaimer, no real privacy policy |

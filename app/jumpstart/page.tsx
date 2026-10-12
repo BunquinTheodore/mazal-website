@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'Go from zero to your first trade, in one sitting. Join the free MAZAL Beginner Trading Jumpstart, powered by GN Club.',
 };
 
-const DISCORD_URL = 'https://discord.gg/joinmazal';
+const DISCORD_URL = 'https://discord.com/invite/joinmazal';
 const X_URL = 'https://x.com/joinmazal';
 
 export default function JumpstartPage() {

@@ -148,7 +148,7 @@ are unchanged). Verified via Chrome (chrome-devtools-mcp) and
    heading/subtext moved up to fill the freed space (`.hero` top padding
    90px → 52px). Added two CTA buttons below the subtext: "Join Mazal"
    (primary, → `/join`) and "Discord Channel" (secondary dark pill, →
-   `https://discord.gg/joinmazal` directly). New `.herobtns`/`.btn.dark`
+   `https://discord.com/invite/joinmazal` directly). New `.herobtns`/`.btn.dark`
    classes. Both buttons later brightened further (`.herobtns .btn`
    override: higher-opacity gradient, stronger glow) and given a continuous
    diagonal shine sweep (`.herobtns .btn::after`, `@keyframes heroShine`,
