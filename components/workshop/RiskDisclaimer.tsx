@@ -14,7 +14,7 @@ export default function RiskDisclaimer() {
         </div>
         <div className="legal" style={{ marginTop: '30px' }}>
           <span>© 2026 Mazal Community. All rights reserved.</span>
-          <span>discord.gg/gzBmy2emg · @joinmazal</span>
+          <span>discord.gg/6Vm2jxMxV · @joinmazal</span>
         </div>
       </div>
     </footer>

@@ -13,7 +13,7 @@ const items = [
   {
     question: 'How do I join?',
     answer:
-      "Join the Discord at discord.gg/gzBmy2emg. It takes less than a minute. Introduce yourself, pick your channels, and you're in. Membership is completely free.",
+      "Join the Discord at discord.gg/6Vm2jxMxV. It takes less than a minute. Introduce yourself, pick your channels, and you're in. Membership is completely free.",
   },
   {
     question: 'What markets do you trade?',

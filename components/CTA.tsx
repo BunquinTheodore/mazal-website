@@ -13,7 +13,7 @@ export default function CTA() {
             <span>Membership is free. Forever. No paid tiers, no locked channels for learning, the workshops, sessions, and community are open to everyone.</span>
           </div>
           <div className="ctabtns">
-            <a className="btn" href="https://discord.gg/gzBmy2emg" target="_blank" rel="noopener">Join the Discord</a>
+            <a className="btn" href="https://discord.gg/6Vm2jxMxV" target="_blank" rel="noopener">Join the Discord</a>
             <a className="btn ghost" href="#benefits">Start learning today</a>
           </div>
         </div>
