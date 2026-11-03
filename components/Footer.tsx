@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -14,6 +15,7 @@ export default function Footer() {
           </div>
           <div>
             <h4>Community</h4>
+            <Link href="/upskill">Upskill in Crypto Trading</Link>
             <a href="https://discord.com/invite/joinmazal" target="_blank" rel="noopener">Discord</a>
             <a href="https://facebook.com/joinmazal" target="_blank" rel="noopener">Facebook: @joinmazal</a>
             <a href="https://instagram.com/joinmazal" target="_blank" rel="noopener">Instagram: @joinmazal</a>

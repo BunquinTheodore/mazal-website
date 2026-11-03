@@ -1,0 +1,360 @@
+/* Scoped stylesheet for /upskill. Builds on the global glass primitives
+   (.card, .stat, .cta, .btn, .herobtns, .eyebrow, .rv) and only adds
+   up- prefixed layout classes, using the existing brand tokens. */
+
+.up-page section { padding: 88px 0; }
+.up-page h2 { text-wrap: balance; }
+
+.up-kicker {
+  display: block;
+  font-family: var(--f-ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-bottom: 4px;
+}
+
+.up-h3,
+.up-page .card h3.up-h3 {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(24px, 3vw, 34px);
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--t1);
+  margin-bottom: 0;
+}
+
+/* ---------- Hero ---------- */
+
+.up-page .up-hero { padding: 64px 0 40px; }
+
+.up-hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.up-h1 {
+  font-size: clamp(38px, 5.4vw, 68px);
+  margin: 22px 0 18px;
+  text-wrap: balance;
+}
+
+.up-hero-photo,
+.up-media,
+.up-way-img,
+.up-perks-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  border: 1px solid var(--stroke);
+  box-shadow: 0 1px 0 var(--glass-hi), 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 50px rgba(192, 240, 48, 0.08);
+}
+
+.up-hero-photo { aspect-ratio: 5 / 4; }
+
+.up-hero-photo img,
+.up-media img,
+.up-way-img img,
+.up-perks-photo img { object-fit: cover; }
+
+.up-photo-tag {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-family: var(--f-ui);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t1);
+  background: color-mix(in srgb, var(--ink) 62%, transparent);
+  border: 1px solid var(--stroke);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+}
+
+.up-proof { margin-top: 64px; text-align: center; }
+
+.up-proof-lead {
+  font-family: var(--f-ui);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t2);
+}
+
+.up-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* ---------- 3 ways ---------- */
+
+.up-ways {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 46px;
+}
+
+.up-page .card.up-way { padding: 16px 16px 28px; }
+.up-page .card:hover { transform: translateY(-4px) scale(1.02); }
+
+.up-way-img {
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.up-way-num,
+.up-option-num,
+.up-pain-mark {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 15px;
+  letter-spacing: 0.2em;
+  color: var(--t3);
+  margin: 0 8px 6px;
+}
+
+.up-way h3,
+.up-way p { margin-left: 8px; margin-right: 8px; }
+
+.up-band {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding: 30px 34px;
+  border-radius: 26px;
+  background: linear-gradient(120deg, color-mix(in srgb, var(--green) 12%, transparent), color-mix(in srgb, var(--blue) 20%, transparent));
+  border: 1px solid var(--gstroke);
+  box-shadow: 0 1px 0 var(--glass-hi), 0 24px 50px rgba(0, 0, 0, 0.3);
+}
+
+.up-band-text {
+  font-family: var(--f-display);
+  font-size: clamp(22px, 2.6vw, 30px);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  max-width: 560px;
+}
+
+.up-band-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--t2);
+  font-size: 15px;
+}
+
+.up-band-cta .herobtns { margin-top: 12px; }
+
+/* ---------- Split layouts ---------- */
+
+.up-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.up-split-media { grid-template-columns: 0.9fr 1.1fr; }
+
+.up-media { aspect-ratio: 4 / 5; }
+
+.up-prose p { color: var(--t2); font-size: 17px; margin-bottom: 16px; }
+.up-prose .up-prose-strong { color: var(--t1); font-weight: 600; }
+
+.up-pain-head { margin-top: 72px; }
+.up-pain-head .sub { margin-top: 8px; }
+
+.up-pains,
+.up-imagine,
+.up-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.up-pain .up-pain-mark { margin: 0 0 10px; color: var(--green); }
+.up-pain p { color: var(--t1); font-size: 16px; }
+
+/* ---------- Hands-on ---------- */
+
+.up-teach { list-style: none; margin-top: 22px; display: grid; gap: 18px; }
+.up-teach li { display: flex; gap: 16px; align-items: flex-start; }
+.up-teach strong { font-family: var(--f-ui); font-weight: 600; letter-spacing: 0.04em; }
+.up-teach p { color: var(--t2); font-size: 15px; margin-top: 2px; }
+
+.up-check {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  background: linear-gradient(160deg, rgba(222, 255, 120, 0.9), var(--green2));
+  box-shadow: 0 0 20px rgba(192, 240, 48, 0.35);
+}
+
+.up-page .card.up-perks {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  padding: 36px;
+}
+
+.up-perks-copy p { color: var(--t2); margin-top: 12px; font-size: 16px; }
+
+.up-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+
+.up-pill {
+  font-family: var(--f-ui);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--gstroke);
+  color: var(--green);
+  background: color-mix(in srgb, var(--green) 8%, transparent);
+}
+
+.up-perks-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.up-perks-photo { aspect-ratio: 4 / 5; border-radius: 18px; }
+
+/* ---------- Imagine + story ---------- */
+
+.up-imagine-card h3 { color: var(--green); }
+
+.up-page .cta.up-story {
+  margin-top: 30px;
+  padding: 44px 40px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 44px;
+  align-items: center;
+  text-align: left;
+}
+
+.up-story-figure {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-ui);
+  font-weight: 600;
+  font-size: clamp(26px, 3.4vw, 42px);
+  white-space: nowrap;
+}
+
+.up-story-from { color: var(--t3); }
+.up-story-arrow { color: var(--green); display: flex; }
+.up-story-to { color: var(--green); text-shadow: 0 0 34px rgba(192, 240, 48, 0.4); }
+
+.up-story-copy p { color: var(--t2); font-size: 17px; }
+
+.up-story-punch {
+  margin-top: 12px;
+  color: var(--t1) !important;
+  font-family: var(--f-display);
+  font-size: clamp(20px, 2.4vw, 28px) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+/* ---------- Options + final CTA ---------- */
+
+.up-objection { text-align: center; }
+.up-objection .sub { margin: 0 auto; }
+
+.up-quote {
+  display: inline-block;
+  font-style: italic;
+  color: var(--t2);
+  font-size: 17px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.up-option .up-option-num { margin: 0 0 8px; font-size: 34px; color: var(--t3); }
+.up-option h3 { color: var(--t1); }
+
+.up-page .card.up-option-best {
+  border-color: var(--gstroke);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--green) 16%, transparent), color-mix(in srgb, var(--blue) 22%, transparent));
+  box-shadow: 0 1px 0 var(--glass-hi), 0 0 44px rgba(192, 240, 48, 0.16), 0 24px 50px rgba(0, 0, 0, 0.35);
+}
+
+.up-option-best .up-option-num,
+.up-option-best h3 { color: var(--green); }
+
+.up-option-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-family: var(--f-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--green);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.up-page .cta.up-final { margin-top: 40px; padding: 64px 30px; }
+.up-final-btns { justify-content: center; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .up-page section { padding: 64px 0; }
+  .up-hero-grid,
+  .up-split,
+  .up-split-media,
+  .up-page .card.up-perks,
+  .up-page .cta.up-story { grid-template-columns: 1fr; gap: 32px; }
+  .up-ways,
+  .up-pains,
+  .up-imagine,
+  .up-options { grid-template-columns: 1fr; }
+  .up-hero-copy { text-align: center; }
+  .up-hero-copy .sub { margin: 0 auto; }
+  .up-media { aspect-ratio: 4 / 3; }
+  .up-band { flex-direction: column; text-align: center; padding: 28px 22px; }
+  .up-band-cta { align-items: center; }
+  .up-page .cta.up-story { text-align: center; padding: 36px 24px; }
+  .up-story-figure { justify-content: center; }
+}
+
+@media (max-width: 560px) {
+  .up-stats { gap: 10px; }
+  .up-stats .stat { padding: 22px 8px; }
+  .up-stats .stat > span { letter-spacing: 0.1em; font-size: 11px; }
+  .up-page .card.up-perks { padding: 24px; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .up-photo-tag { background: var(--ink); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}

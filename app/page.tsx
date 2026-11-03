@@ -10,6 +10,7 @@ import FAQ from '@/components/FAQ';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 import PoweredChip from '@/components/PoweredChip';
+import UpskillBanner from '@/components/UpskillBanner';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <main>
+        <UpskillBanner />
         <About />
         <Performance />
         <Highlights />

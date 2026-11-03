@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: '/#performance', label: 'Performance' },
   { href: '/#highlights', label: 'Highlights' },
   { href: '/#benefits', label: 'Benefits' },
+  { href: '/upskill', label: 'Upskill' },
   { href: '/gn-club', label: 'Events', gn: true },
   { href: '/#partners', label: 'Partners' },
 ];
