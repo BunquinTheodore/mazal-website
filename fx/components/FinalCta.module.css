@@ -1,0 +1,74 @@
+.band {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--navy);
+  padding: clamp(220px, 30vw, 360px) 0 clamp(64px, 8vw, 104px);
+}
+
+/* Photo on top, fading into solid navy like the ad. */
+.bg { position: absolute; inset: 0 0 auto 0; height: 78%; z-index: -1; }
+.bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--navy) 30%, transparent) 0%, color-mix(in srgb, var(--navy) 55%, transparent) 45%, var(--navy) 100%),
+    linear-gradient(90deg, color-mix(in srgb, var(--navy-900) 60%, transparent), transparent 70%);
+}
+.photo { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: saturate(0.85); }
+
+.inner { position: relative; }
+.title { max-width: 14ch; }
+.nowrap { white-space: nowrap; }
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: clamp(24px, 3vw, 36px) 0 18px;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+/* Trailing rule after the label (not before it), as in the ad. */
+.kicker::after {
+  content: '';
+  flex: 1;
+  max-width: 560px;
+  height: 1px;
+  background: color-mix(in srgb, var(--orange) 70%, transparent);
+}
+
+.perks {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 12px clamp(32px, 6vw, 88px);
+}
+.perks li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 800;
+  font-size: clamp(17px, 1.9vw, 22px);
+}
+.diamond {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--orange);
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: clamp(32px, 4vw, 44px); }
+.big { min-height: 64px; padding: 16px 36px; font-size: clamp(16px, 1.6vw, 19px); }
+
+@media (max-width: 560px) {
+  .perks { grid-template-columns: minmax(0, 1fr); }
+  .actions { flex-direction: column; }
+  .big { width: 100%; padding: 16px 20px; }
+}

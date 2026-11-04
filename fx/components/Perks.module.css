@@ -1,0 +1,62 @@
+.perks {
+  background:
+    radial-gradient(ellipse 60% 50% at 85% 0%, color-mix(in srgb, var(--blue) 22%, transparent), transparent 70%),
+    var(--navy);
+}
+
+.head { margin-bottom: clamp(32px, 4vw, 52px); }
+
+/* Label first, then a thin rule extending right (never before the text). */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 520px;
+}
+.eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), transparent);
+}
+
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 24px;
+  min-height: 88px;
+}
+
+.diamond {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  background: var(--orange);
+  transform: rotate(45deg);
+  border-radius: 2px;
+  box-shadow: 0 0 14px color-mix(in srgb, var(--orange) 55%, transparent);
+}
+
+.text {
+  font-weight: 800;
+  font-size: clamp(17px, 1.6vw, 20px);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+}
+@media (max-width: 520px) {
+  .grid { grid-template-columns: 1fr; gap: 12px; }
+  .card { padding: 18px; min-height: 0; }
+}

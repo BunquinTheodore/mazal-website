@@ -1,0 +1,223 @@
+.card {
+  position: relative;
+  background: var(--white);
+  color: var(--ink);
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 3.2vw, 36px);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 80%, transparent), 0 30px 70px -28px color-mix(in srgb, var(--navy-950) 75%, var(--blue) 25%);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: var(--f-body);
+  font-weight: 800;
+  font-size: clamp(22px, 2.4vw, 28px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.stepCount {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--blue-bright);
+  white-space: nowrap;
+}
+
+.progress {
+  height: 8px;
+  margin: 18px 0 24px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--blue-soft) 22%, var(--white));
+  overflow: hidden;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--orange-deep), var(--orange));
+  transition: width 0.5s ease;
+}
+
+.form { display: grid; gap: 18px; }
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.field { display: grid; gap: 6px; min-width: 0; align-content: start; }
+
+/* Side-by-side fields share label/input/error tracks, so a wrapping label
+   (e.g. "(optional)") never pushes its input out of line with its neighbour. */
+@media (min-width: 601px) {
+  .row { grid-template-rows: auto auto auto; row-gap: 6px; }
+  .row > .field { grid-row: span 3; grid-template-rows: subgrid; row-gap: 6px; }
+  .row > .field > .label { align-self: end; }
+}
+
+.label {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.optional { font-weight: 500; color: var(--ink-2); }
+
+.input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid color-mix(in srgb, var(--ink-2) 28%, var(--white));
+  background: color-mix(in srgb, var(--ice) 60%, var(--white));
+  color: var(--ink);
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input::placeholder { color: color-mix(in srgb, var(--ink-2) 60%, var(--white)); }
+
+.input:focus {
+  outline: none;
+  border-color: var(--blue-bright);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue-bright) 20%, transparent);
+}
+
+.input[aria-invalid='true'] { border-color: var(--orange-deep); }
+
+.fieldset { border: 0; display: grid; gap: 10px; min-width: 0; }
+
+.pills { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1.5px solid color-mix(in srgb, var(--ink-2) 28%, var(--white));
+  background: color-mix(in srgb, var(--ice) 60%, var(--white));
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pill:hover { border-color: var(--blue-bright); }
+
+.radio {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.pill:has(.radio:checked) {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.pill:has(.radio:focus-visible) {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.pill:has(.radio[aria-invalid='true']) { border-color: var(--orange-deep); }
+
+.error {
+  font-size: 13px;
+  font-weight: 600;
+  /* Darkened toward ink so 13px text clears 4.5:1 on the white card. */
+  color: color-mix(in srgb, var(--orange-deep) 68%, var(--ink));
+}
+
+.serverError {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--orange) 12%, var(--white));
+  border: 1px solid color-mix(in srgb, var(--orange) 45%, var(--white));
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.fine {
+  font-size: 13px;
+  color: var(--ink-2);
+  text-align: center;
+}
+
+.done { display: grid; gap: 20px; }
+
+.doneTitle {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.doneTitle:focus { outline: none; }
+
+.steps { list-style: none; display: grid; gap: 14px; }
+
+.step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--ice);
+}
+
+.num {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--navy-900);
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.stepBody { display: grid; gap: 10px; justify-items: start; min-width: 0; }
+
+.stepTitle { font-weight: 800; font-size: 16px; line-height: 1.35; color: var(--ink); }
+
+.stepNote { font-size: 15px; color: var(--ink-2); }
+
+@media (max-width: 600px) {
+  .row { grid-template-columns: minmax(0, 1fr); }
+  .step { padding: 14px; gap: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar, .input, .pill { transition: none; }
+}

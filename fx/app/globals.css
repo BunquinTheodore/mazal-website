@@ -1,0 +1,164 @@
+/* MAZAL FX design tokens and shared primitives.
+   Palette sampled from the MAZAL FX ads and workshop mock: deep navy ground,
+   MAZAL blue, and the FX orange. Component CSS modules must use these tokens,
+   never new hex values. */
+:root {
+  --navy-950: #07122f;
+  --navy-900: #0b1a44;
+  --navy: #12224f;
+  --navy-700: #1c3170;
+  --blue: #2f78c4;
+  --blue-bright: #0b72c4;
+  --blue-soft: #5b9be0;
+  --orange: #ee8a32;
+  --orange-deep: #d9741c;
+  --ice: #edf4fb;
+  --white: #ffffff;
+  --ink: #0f1e4a;
+  --ink-2: #3a4a72;
+
+  --t1: #ffffff;
+  --t2: rgba(255, 255, 255, 0.78);
+  --t3: rgba(255, 255, 255, 0.56);
+  --stroke: rgba(255, 255, 255, 0.12);
+
+  --f-display: var(--font-display), 'Montserrat', system-ui, sans-serif;
+  --f-body: var(--font-body), 'Montserrat', system-ui, sans-serif;
+
+  --max: 1200px;
+  --radius-lg: 28px;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow-brand: 0 24px 60px -24px color-mix(in srgb, var(--navy-950) 80%, var(--blue) 20%);
+  --header-h: 76px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--navy);
+  color: var(--t1);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+@media (max-width: 600px) { .wrap { padding: 0 16px; } }
+
+.section { padding: clamp(72px, 9vw, 120px) 0; position: relative; }
+.section-light { background: var(--ice); color: var(--ink); }
+.section-deep { background: var(--navy-900); }
+
+/* Heavy italic display type, as in the ads. */
+.display {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.95;
+  overflow-wrap: break-word;
+}
+.h-xl { font-size: clamp(48px, 9vw, 116px); }
+.h-lg { font-size: clamp(36px, 5.6vw, 72px); }
+.h-md { font-size: clamp(26px, 3.2vw, 40px); }
+.accent-orange { color: var(--orange); }
+.accent-blue { color: var(--blue-bright); }
+
+/* Plain-text eyebrow label (house rule: no leading dash or rule). */
+.eyebrow {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+.section-light .eyebrow { color: var(--blue-bright); }
+
+.lead { font-size: clamp(17px, 1.6vw, 20px); color: var(--t2); max-width: 62ch; }
+.section-light .lead { color: var(--ink-2); }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 22px; border-radius: 999px;
+  background: var(--blue); color: var(--white);
+  font-weight: 800; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase;
+}
+
+/* Buttons: bright glass recipe, each variant keeps its own brand colour. */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 54px; padding: 14px 30px; border-radius: 999px; border: 0;
+  font-weight: 800; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.btn:active { transform: translateY(0); }
+.btn[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; }
+.btn-primary {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--orange) 82%, var(--white) 18%), var(--orange) 55%, var(--orange-deep));
+  color: var(--navy-900);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 55%, transparent), 0 14px 32px -12px color-mix(in srgb, var(--orange) 70%, transparent);
+}
+.btn-secondary {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--blue) 78%, var(--white) 22%), var(--blue));
+  color: var(--white);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 40%, transparent), 0 14px 32px -14px color-mix(in srgb, var(--blue) 80%, transparent);
+}
+.btn-outline {
+  background: color-mix(in srgb, var(--white) 8%, transparent);
+  color: var(--white);
+  border: 1.5px solid color-mix(in srgb, var(--white) 45%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 25%, transparent);
+}
+.btn-block { width: 100%; }
+
+/* Glass card on navy grounds. Always pair with overflow hidden (shine). */
+.glass {
+  position: relative; overflow: hidden;
+  background: color-mix(in srgb, var(--navy-700) 46%, transparent);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(18px) saturate(160%) brightness(1.08);
+  backdrop-filter: blur(18px) saturate(160%) brightness(1.08);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 16%, transparent), var(--shadow-brand);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass { background: var(--navy-700); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* Continuous shine sweep. Host must have overflow hidden (.btn and .glass do). */
+.shine::after {
+  content: ''; position: absolute; inset: -20%; pointer-events: none; z-index: 1;
+  background: linear-gradient(115deg, transparent 38%, color-mix(in srgb, var(--white) 42%, transparent) 50%, transparent 62%);
+  mix-blend-mode: soft-light;
+  transform: translateX(-60%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .shine::after { animation: shine-sweep 5.5s ease-in-out infinite; animation-delay: var(--shine-delay, 0s); }
+}
+@keyframes shine-sweep {
+  0% { transform: translateX(-60%); }
+  45%, 100% { transform: translateX(60%); }
+}
+
+/* Hover zoom, scoped to actual cards only. */
+.card-zoom { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+@media (hover: hover) { .card-zoom:hover { transform: scale(1.03); } }
+@media (prefers-reduced-motion: reduce) { .card-zoom, .card-zoom:hover { transition: none; transform: none; } }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip-link { position: absolute; left: 16px; top: -60px; z-index: 100; background: var(--orange); color: var(--navy-900); padding: 10px 16px; border-radius: 10px; font-weight: 800; }
+.skip-link:focus { top: 12px; }
