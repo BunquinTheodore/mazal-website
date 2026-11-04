@@ -21,10 +21,10 @@ export default function Hero() {
         <figure className={styles.visual}>
           <div className={styles.photoFrame}>
             <Image
-              src="/images/workshop-2.jpg"
-              alt="Traders at a MAZAL live workshop"
-              width={1000}
-              height={586}
+              src="/images/hero-trading.jpg"
+              alt="Traders working on laptops in front of a live price chart at a MAZAL session"
+              width={700}
+              height={568}
               priority
               sizes="(max-width: 960px) 100vw, 40vw"
               className={styles.photo}

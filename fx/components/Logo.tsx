@@ -2,7 +2,8 @@ import Image from 'next/image';
 import styles from './Logo.module.css';
 
 const HEIGHTS = { sm: 22, md: 30, lg: 46 } as const;
-const RATIO = 2001 / 272;
+/** Wordmark is the mark (which reads as the M) followed by AZAL and the FX block. */
+const RATIO = 1679 / 272;
 
 /** Official MAZAL FX wordmark (white MAZAL, orange FX block) on a transparent background. */
 export default function Logo({ size = 'md', priority = false }: { size?: keyof typeof HEIGHTS; priority?: boolean }) {
