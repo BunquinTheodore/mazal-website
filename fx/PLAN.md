@@ -5,6 +5,9 @@ Target URL: **https://fx.joinmazal.org** (Vercel project `mazal-fx` with Root Di
 Lives in the `fx/` folder of the `BunquinTheodore/mazal-website` repo as a fully separate Next.js app
 (own package.json, node_modules, build). The main site's tsconfig excludes `fx`, so neither build touches the other.
 Run it with `cd fx && npm install && npm run dev`.
+Deploys: the `mazal-fx` Vercel project is git-connected to this repo with **Root Directory `fx`** (a dashboard
+setting, not in `fx/vercel.json`), so every push to `main` redeploys it. `fx/vercel.json` pins the Next.js preset
+because the project was created from the CLI and defaulted to "Other", which served 404s.
 
 ## Sources
 - Handwritten "Trading community plan": MAZAL FX community column. Socials FB, Threads, Telegram, X, TikTok.

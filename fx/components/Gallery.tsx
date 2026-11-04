@@ -7,7 +7,6 @@ const HEIGHTS: Record<string, number> = {
   '/images/session-1.jpg': 563,
   '/images/session-2.jpg': 563,
   '/images/bootcamp-1.jpg': 573,
-  '/images/bootcamp-2.jpg': 573,
 };
 const DEFAULT_HEIGHT = 586;
 const WIDTH = 1000;

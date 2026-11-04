@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: 'MAZAL FX',
     locale: 'en_PH',
     type: 'website',
-    images: [{ url: '/images/mazal-fx-full-logo.jpg', width: 1200, height: 1200, alt: 'MAZAL FX, forex trading community' }],
+    images: [{ url: '/images/mazal-fx-og.jpg', width: 1200, height: 1200, alt: 'MAZAL FX, forex trading community' }],
   },
   twitter: { card: 'summary_large_image' },
 };

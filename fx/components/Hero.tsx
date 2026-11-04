@@ -23,7 +23,7 @@ export default function Hero() {
             <Image
               src="/images/hero-trading.jpg"
               alt="Traders working on laptops in front of a live price chart at a MAZAL session"
-              width={700}
+              width={1000}
               height={568}
               priority
               sizes="(max-width: 960px) 100vw, 40vw"
