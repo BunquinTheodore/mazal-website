@@ -1,6 +1,6 @@
 import Mark from '@/components/Mark';
 
-export const metadata = { title: 'MAZAL | unsubscribed', robots: { index: false, follow: false } };
+export const metadata = { title: 'Unsubscribed | MAZAL', robots: { index: false, follow: false } };
 
 export default function Unsubscribed({ searchParams }: { searchParams: { error?: string } }) {
   const failed = Boolean(searchParams.error);

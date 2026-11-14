@@ -5,7 +5,7 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
-const TITLE = "MAZAL | you're early.";
+const TITLE = "You're Early";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
