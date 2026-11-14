@@ -55,6 +55,9 @@ a { color: inherit; }
   background: radial-gradient(closest-side, rgba(24, 134, 196, 0.85), rgba(32, 90, 170, 0.45) 60%, transparent);
   animation: drift-b 12s ease-in-out infinite alternate;
 }
+@keyframes grad-flow {
+  to { background-position: -200% 0; }
+}
 @keyframes drift-a {
   0% { transform: translate3d(-4%, 6%, 0) scale(1); }
   50% { transform: translate3d(34%, -26%, 0) scale(1.3); }
@@ -82,6 +85,11 @@ a { color: inherit; }
   animation: drift-c 11s ease-in-out infinite alternate;
   will-change: transform;
 }
+
+/* Page background (after the splash): centred behind the content and faster than the splash wash. */
+.page .aurora::before { bottom: 30%; left: -6%; animation-duration: 6s; }
+.page .aurora::after { bottom: 34%; right: -8%; animation-duration: 7s; }
+.page .aurora i { bottom: 24%; left: 28%; animation-duration: 5s; }
 
 /* ---------- splash ---------- */
 .splash {
@@ -137,11 +145,16 @@ a { color: inherit; }
 @keyframes chev-on {
   to { stroke: var(--on); filter: drop-shadow(0 0 8px var(--on)); }
 }
+/* Visible text spans the same width as the chevron row; trailing letter space is cancelled so it centres true. */
 .splash-text {
+  --ls: 0.34em;
   font-weight: 700;
-  font-size: 22px;
-  letter-spacing: 0.32em;
-  padding-left: 0.32em;
+  font-size: 20.5px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: var(--ls);
+  margin-right: calc(var(--ls) * -1);
+  white-space: nowrap;
 }
 
 /* ---------- page ---------- */
@@ -176,24 +189,6 @@ a { color: inherit; }
   from { opacity: 0; transform: translateY(18px); }
 }
 
-.tags { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 42px; }
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  height: 40px;
-  padding: 0 16px 0 18px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background: rgba(10, 9, 24, 0.7);
-  font-size: 15px;
-  font-weight: 600;
-}
-.bar { width: 76px; height: 12px; border-radius: 999px; }
-.bar.pink { background: var(--pink); }
-.bar.purple { background: var(--purple); }
-.bar.blue { background: var(--blue); }
-
 .headline {
   font-size: clamp(58px, 14.6vw, 152px);
   line-height: 1;
@@ -203,7 +198,9 @@ a { color: inherit; }
 }
 .headline.small { font-size: clamp(40px, 8vw, 84px); }
 .grad {
-  background: linear-gradient(90deg, #ff8fd0 0%, #b18cff 34%, #6cc4ff 68%, #8cf0e0 100%);
+  background: linear-gradient(90deg, #ff8fd0, #b18cff, #6cc4ff, #8cf0e0, #6cc4ff, #b18cff, #ff8fd0);
+  background-size: 200% 100%;
+  animation: grad-flow 5s linear infinite;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -221,7 +218,7 @@ a { color: inherit; }
 .surprise { margin-top: 26px; font-size: clamp(17px, 2.4vw, 21px); font-weight: 700; color: var(--lime); }
 
 .form { width: 100%; max-width: 640px; margin-top: 36px; text-align: left; }
-.label { display: block; font-size: 15px; font-weight: 600; color: var(--muted); margin: 0 0 10px 28px; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .row { display: flex; gap: 12px; }
 .form input[type='email'] {
   flex: 1;
@@ -243,14 +240,19 @@ a { color: inherit; }
 .form input[aria-invalid='true'] { border-color: #ff7a8c; }
 
 .pill-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 64px;
   padding: 0 38px;
-  border: 0;
+  border: 1px solid rgba(240, 255, 205, 0.7);
   border-radius: 999px;
-  background: var(--lime);
+  background: linear-gradient(160deg, rgba(226, 255, 130, 0.88), rgba(168, 214, 36, 0.74));
+  -webkit-backdrop-filter: blur(14px) saturate(1.6) brightness(1.1);
+  backdrop-filter: blur(14px) saturate(1.6) brightness(1.1);
   color: #06060a;
   font: inherit;
   font-size: 18px;
@@ -259,9 +261,30 @@ a { color: inherit; }
   cursor: pointer;
   white-space: nowrap;
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s, opacity 0.2s;
-  box-shadow: 0 0 34px rgba(194, 240, 50, 0.28);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.55) inset, 0 -10px 18px rgba(120, 170, 10, 0.25) inset,
+    0 0 40px rgba(194, 240, 50, 0.4), 0 14px 30px rgba(0, 0, 0, 0.35);
 }
-.pill-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 0 50px rgba(194, 240, 50, 0.45); }
+/* Light sweep across the glass. */
+.pill-btn::after {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.55) 50%, transparent 62%);
+  mix-blend-mode: soft-light;
+  transform: translateX(-70%);
+  animation: btn-shine 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes btn-shine {
+  0%, 25% { transform: translateX(-70%); }
+  75%, 100% { transform: translateX(70%); }
+}
+.pill-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 -10px 18px rgba(120, 170, 10, 0.25) inset,
+    0 0 58px rgba(194, 240, 50, 0.6), 0 18px 34px rgba(0, 0, 0, 0.4);
+}
 .pill-btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .pill-btn:disabled { opacity: 0.7; cursor: progress; }
 
@@ -278,17 +301,18 @@ a { color: inherit; }
 @media (max-width: 640px) {
   .page { padding: 28px 18px 48px; }
   .top-mark { width: 48px; }
-  .tags { gap: 6px; margin-bottom: 30px; flex-wrap: nowrap; }
-  .tag { height: 32px; padding: 0 10px 0 12px; font-size: 12px; gap: 6px; }
-  .bar { width: 30px; height: 9px; }
   .row { flex-direction: column; }
   .form input[type='email'] { flex: none; width: 100%; }
   .form input[type='email'], .pill-btn { height: 58px; }
   .pill-btn { width: 100%; }
-  .label, .error { margin-left: 22px; }
+  .error { margin-left: 22px; }
   .splash-mark { width: 84px; }
   .chev { width: 28px; height: 26px; }
-  .splash-text { font-size: 16px; }
+  .splash-text { font-size: 15.1px; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .pill-btn { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--lime); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -296,4 +320,6 @@ a { color: inherit; }
   .aurora::before, .aurora::after, .aurora i { animation: none; }
   .chev { animation-duration: 0.01s; animation-delay: 0s; stroke: var(--on); }
   .hero { animation: none; }
+  .grad { animation: none; }
+  .pill-btn::after { animation: none; transform: translateX(0); opacity: 0.5; }
 }

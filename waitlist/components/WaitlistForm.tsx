@@ -53,7 +53,7 @@ export default function WaitlistForm() {
 
   return (
     <form className="form" onSubmit={onSubmit} noValidate>
-      <label htmlFor="email" className="label">email address</label>
+      <label htmlFor="email" className="sr-only">email address</label>
       <div className="row">
         <input
           id="email"
@@ -61,7 +61,7 @@ export default function WaitlistForm() {
           type="email"
           inputMode="email"
           autoComplete="email"
-          placeholder="you@email.com"
+          placeholder="your-email@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-invalid={status === 'error'}
