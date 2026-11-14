@@ -61,7 +61,7 @@ export default function WaitlistForm() {
           type="email"
           inputMode="email"
           autoComplete="email"
-          placeholder="your-email@gmail.com"
+          placeholder="youremail@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-invalid={status === 'error'}
