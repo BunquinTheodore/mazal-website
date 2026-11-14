@@ -145,17 +145,6 @@ a { color: inherit; }
 @keyframes chev-on {
   to { stroke: var(--on); filter: drop-shadow(0 0 8px var(--on)); }
 }
-/* Visible text spans the same width as the chevron row; trailing letter space is cancelled so it centres true. */
-.splash-text {
-  --ls: 0.34em;
-  font-weight: 700;
-  font-size: 20.5px;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: var(--ls);
-  margin-right: calc(var(--ls) * -1);
-  white-space: nowrap;
-}
 
 /* ---------- page ---------- */
 .page {
@@ -308,7 +297,6 @@ a { color: inherit; }
   .error { margin-left: 22px; }
   .splash-mark { width: 84px; }
   .chev { width: 28px; height: 26px; }
-  .splash-text { font-size: 15.1px; }
 }
 
 @media (prefers-reduced-transparency: reduce) {

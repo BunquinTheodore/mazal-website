@@ -19,7 +19,6 @@ export default function Splash() {
             </svg>
           ))}
         </div>
-        <p className="splash-text">loading the desk</p>
       </div>
     </div>
   );
